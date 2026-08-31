@@ -1,0 +1,68 @@
+"use client"
+
+import { motion } from "framer-motion"
+
+function InitiativeCard({ title, label, icon, isFirst }: { title: string; label?: string; icon?: string; isFirst?: boolean }) {
+  if (isFirst) {
+    return (
+      <div className="bg-[#1E4D97] rounded-3xl p-8 flex flex-col justify-end min-h-[280px] md:min-h-[320px] group cursor-pointer relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#1E4D97]/20">
+        <div className="absolute inset-0 bg-[#173f7a] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative z-10 flex items-center justify-between w-full">
+          <h3 className="text-white text-2xl md:text-3xl font-semibold tracking-wide">{title}</h3>
+          <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#1E4D97] transition-colors">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </span>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-gray-200 rounded-3xl min-h-[280px] md:min-h-[320px] relative overflow-hidden group cursor-pointer border-2 border-dashed border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-gray-100 group-hover:scale-105 transition-transform duration-500">
+        <span className="text-4xl mb-2">{icon}</span>
+        <svg className="w-8 h-8 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span className="text-xs font-medium px-4 text-center">{label}</span>
+      </div>
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="absolute bottom-6 left-6 z-10 transform group-hover:translate-x-2 transition-transform duration-300">
+        <h3 className="text-white text-2xl font-semibold tracking-wide">{title}</h3>
+      </div>
+    </div>
+  )
+}
+
+const INITIATIVES = [
+  { title: "Our Initiatives", isFirst: true },
+  { title: "Education Scholarship", label: "Image: Scholarship program", icon: "🎓" },
+  { title: "Diabetes Support", label: "Image: Health screening", icon: "🩸" },
+  { title: "Igiogbe Center", label: "Image: Cultural center", icon: "🏛" },
+  { title: "Youth & Leadership", label: "Image: Youth training", icon: "🌟" },
+  { title: "Senior Citizens", label: "Image: Elderly care", icon: "👴" },
+]
+
+export function OurInitiatives() {
+  return (
+    <section className="w-full py-16 md:py-24 px-4 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {INITIATIVES.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+            >
+              <InitiativeCard title={item.title} label={item.label} icon={item.icon} isFirst={item.isFirst} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
