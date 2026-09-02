@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { PageHero } from "@/components/ui/PageHero"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
-
 const CONTACT_INFO = [
   {
     icon: (
@@ -53,7 +52,7 @@ export default function ContactPage() {
       />
 
       {/* Contact Info Cards */}
-      <section className="w-full py-16 md:py-24 px-4">
+      <section className="w-full pt-8 md:pt-12 pb-16 md:pb-24 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
           {CONTACT_INFO.map((item, i) => (
             <motion.div
@@ -108,6 +107,23 @@ export default function ContactPage() {
                 <span className="text-sm font-medium text-gray-700">{s.label}</span>
               </motion.a>
             ))}
+          </div>
+
+          {/* Embedded Google Map */}
+          <div className="mt-20">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 mb-8 text-center">Find Us in Benin City</h2>
+            <div className="w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126839.8143977543!2d5.526279612046535!3d6.332306788544497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040d3714ec5c935%3A0x6b4af45564bf1d02!2sBenin%20City%2C%20Edo%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1714567890123!5m2!1sen!2sng"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Arise CSF Location - Benin City"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>

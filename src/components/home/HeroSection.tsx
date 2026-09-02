@@ -4,19 +4,7 @@ import { motion } from "framer-motion"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
 
-function ImagePlaceholder({ label, className = "", aspectRatio = "16/9" }: { label: string; className?: string; aspectRatio?: string }) {
-  return (
-    <div
-      className={`bg-gray-100 border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center text-gray-400 ${className}`}
-      style={{ aspectRatio }}
-    >
-      <svg className="w-10 h-10 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-      </svg>
-      <span className="text-sm font-medium text-center px-4">{label}</span>
-    </div>
-  )
-}
+import Image from "next/image"
 
 export function HeroSection() {
   return (
@@ -78,7 +66,9 @@ export function HeroSection() {
               </span>
             </motion.div>
 
-            <ImagePlaceholder label="Hero Image 1 — Community outreach" aspectRatio="4/3" className="w-full mt-12 z-10 relative" />
+            <div className="w-full mt-12 z-10 relative aspect-[4/3] rounded-3xl overflow-hidden">
+              <Image src="/images/educational-support/1.jpg" alt="Community outreach" fill className="object-cover" />
+            </div>
 
             <motion.div 
               initial={{ y: 20, opacity: 0 }}
@@ -110,7 +100,9 @@ export function HeroSection() {
               <span className="text-3xl font-serif text-[#1E4D97] leading-none absolute bottom-3 right-4">&rdquo;</span>
             </motion.div>
 
-            <ImagePlaceholder label="Hero Image 2 — Volunteers in action" aspectRatio="4/3" className="w-full z-10 relative" />
+            <div className="w-full z-10 relative aspect-[4/3] rounded-3xl overflow-hidden">
+              <Image src="/images/diabetes-support/1.jpg" alt="Volunteers in action" fill className="object-cover" />
+            </div>
 
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}

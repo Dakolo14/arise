@@ -1,39 +1,35 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
+import { LayoutGrid, Grid2X2, Command, Code, Disc, LayoutTemplate, Hexagon, PieChart } from "lucide-react"
 import { PageHero } from "@/components/ui/PageHero"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
-
 const INITIATIVES = [
   {
-    icon: "🎓",
     title: "Arise Education Scholarship Initiative",
     description: "Providing scholarships and educational support to deserving indigent students, empowering them to achieve their full potential.",
-    imageLabel: "Image: Scholarship ceremony",
+    imageSrc: "/images/educational-support/2.jpg",
   },
   {
-    icon: "🩸",
     title: "Arise Diabetes Support Initiative",
     description: "Providing free diabetes and blood pressure screening, health education, counseling, and medical support for vulnerable individuals who cannot afford essential care.",
-    imageLabel: "Image: Health screening event",
+    imageSrc: "/images/diabetes-support/3.JPG",
   },
   {
-    icon: "🏛",
     title: "The Igiogbe Information Center",
     description: "Preserving our cultural heritage, promoting leadership, and strengthening communities through education and civic engagement.",
-    imageLabel: "Image: Igiogbe Center",
+    imageSrc: "/images/igiogbe-support/1.jpg",
   },
   {
-    icon: "🌟",
     title: "Arise Youth & Leadership Development Initiative",
     description: "Empowering young people through mentorship, leadership training, and community service.",
-    imageLabel: "Image: Youth leadership program",
+    imageSrc: "/images/educational-support/6.jpg",
   },
   {
-    icon: "👴👵",
     title: "Arise Senior Citizens Support Initiative",
     description: "Promoting the health, dignity, and well-being of senior citizens through care, support, and community engagement.",
-    imageLabel: "Image: Senior citizens program",
+    imageSrc: "/images/educational-support/3.JPG",
   },
 ]
 
@@ -41,13 +37,13 @@ export default function InitiativesPage() {
   return (
     <div className="flex flex-col w-full bg-white">
       <PageHero
-        label="Our Initiatives"
         title="Connecting Caring Hearts with Lives in Need"
         subtitle="Every initiative reflects our commitment to connecting caring hearts with lives in need."
+        titleClassName="max-w-4xl mx-auto"
       />
 
       {/* Initiatives List */}
-      <section className="w-full py-16 md:py-24 px-4">
+      <section className="w-full pt-8 md:pt-12 pb-16 md:pb-24 px-4">
         <div className="max-w-6xl mx-auto space-y-20">
           {INITIATIVES.map((item, i) => (
             <motion.div
@@ -60,18 +56,13 @@ export default function InitiativesPage() {
             >
               {/* Image */}
               <div className={`${i % 2 === 1 ? "md:order-2" : ""}`}>
-                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-3xl aspect-[16/10] flex flex-col items-center justify-center text-gray-400 hover:shadow-lg transition-shadow duration-300">
-                  <span className="text-5xl mb-3">{item.icon}</span>
-                  <svg className="w-10 h-10 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm font-medium">{item.imageLabel}</span>
+                <div className="relative rounded-3xl aspect-[16/10] overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+                  <Image src={item.imageSrc} alt={item.title} fill className="object-cover" />
                 </div>
               </div>
 
               {/* Content */}
               <div className={`${i % 2 === 1 ? "md:order-1" : ""}`}>
-                <span className="text-4xl block mb-4">{item.icon}</span>
                 <h3 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">{item.title}</h3>
                 <p className="text-[15px] text-gray-500 leading-relaxed font-light">{item.description}</p>
               </div>
@@ -118,19 +109,27 @@ export default function InitiativesPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl h-24 flex items-center justify-center text-gray-400"
-              >
-                <span className="text-sm font-medium">Partner Logo {i}</span>
-              </motion.div>
-            ))}
+          <div className="w-full overflow-hidden relative flex">
+            <div className="flex w-max items-center gap-x-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 animate-marquee pr-12">
+              <div className="flex items-center gap-2 text-gray-800"><LayoutGrid className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logoluxe</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Grid2X2 className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Graphicraft</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Command className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Auraicons</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Code className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Nexmark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Disc className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logolaze</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><LayoutTemplate className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Primeark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Hexagon className="w-6 h-6 fill-current" /><span className="text-xl font-bold tracking-tight">Logozen</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><PieChart className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Designnest</span></div>
+              
+              {/* Duplicate for seamless loop */}
+              <div className="flex items-center gap-2 text-gray-800"><LayoutGrid className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logoluxe</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Grid2X2 className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Graphicraft</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Command className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Auraicons</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Code className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Nexmark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Disc className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logolaze</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><LayoutTemplate className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Primeark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Hexagon className="w-6 h-6 fill-current" /><span className="text-xl font-bold tracking-tight">Logozen</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><PieChart className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Designnest</span></div>
+            </div>
           </div>
         </div>
       </section>

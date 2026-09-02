@@ -1,252 +1,363 @@
 "use client"
 
+import React, { useRef } from "react"
 import { motion } from "framer-motion"
-import { PageHero } from "@/components/ui/PageHero"
-import { SvgUnderline } from "@/components/ui/SvgUnderline"
+import Image from "next/image"
+import { Metadata } from "next"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
-
-function ImagePlaceholder({ label, className = "" }: { label: string; className?: string }) {
-  return (
-    <div
-      className={`bg-gray-100 border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center text-gray-400 ${className}`}
-    >
-      <svg className="w-10 h-10 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-      </svg>
-      <span className="text-sm font-medium text-center px-4">{label}</span>
-    </div>
-  )
-}
+import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, LayoutGrid, Grid2X2, Command, Code, Disc, LayoutTemplate, Hexagon, PieChart, ChevronLeft, ChevronRight, Play } from "lucide-react"
 
 const CORE_VALUES = [
-  { icon: "❤️", label: "Compassion" },
-  { icon: "🤝", label: "Integrity" },
-  { icon: "🌱", label: "Empowerment" },
-  { icon: "🌍", label: "Community" },
-  { icon: "⭐", label: "Excellence" },
-  { icon: "🤲", label: "Service" },
+  { icon: Heart, title: "Compassion", desc: "Acting with deep empathy and care." },
+  { icon: ShieldCheck, title: "Integrity", desc: "Upholding trust in all we do." },
+  { icon: Zap, title: "Empowerment", desc: "Lifting others to their full potential." },
+  { icon: Users, title: "Community", desc: "Building strong, united networks." },
+  { icon: Star, title: "Excellence", desc: "Delivering our best every day." },
+  { icon: HelpingHand, title: "Service", desc: "Selflessly helping those in need." },
 ]
 
-const SDGS = [
-  { icon: "❤️", label: "SDG 3", title: "Good Health & Well-being" },
-  { icon: "🎓", label: "SDG 4", title: "Quality Education" },
-  { icon: "⚖️", label: "SDG 10", title: "Reduced Inequalities" },
-  { icon: "🏙️", label: "SDG 11", title: "Sustainable Cities & Communities" },
-  { icon: "🤝", label: "SDG 17", title: "Partnerships for the Goals" },
+const TEAM = [
+  { name: "Team Member Name", role: "Co-Founder", img: "" },
+  { name: "Team Member Name", role: "Head of Programs", img: "" },
+  { name: "Team Member Name", role: "Community Lead", img: "" },
+  { name: "Team Member Name", role: "Medical Director", img: "" },
+]
+
+const VIDEOS = [
+  { title: "Education Impact Story", thumbnail: "/images/educational-support/2.jpg", duration: "3:42" },
+  { title: "Healthcare Outreach", thumbnail: "/images/diabetes-support/2.jpg", duration: "2:15" },
+  { title: "Community Transformation", thumbnail: "/images/igiogbe-support/1.jpg", duration: "5:04" },
 ]
 
 export default function AboutPage() {
+  const carouselRef = useRef<HTMLDivElement>(null)
+  
+  const scroll = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = direction === 'left' ? -350 : 350
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
+
   return (
-    <div className="flex flex-col w-full bg-white">
-      <PageHero
-        label="About Us"
-        title="Who We Are"
-        subtitle="Arise Community Support Foundation (Arise CSF) is a nonprofit organization dedicated to connecting caring hearts with lives in need."
-      />
+    <div className="flex flex-col w-full bg-[#f9f9fa] text-[#111111] font-sans selection:bg-[#1E4D97] selection:text-white pb-24">
+      
+      {/* 1. Hero & Masonry Grid */}
+      <section className="w-full pt-12 md:pt-16 px-6">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Header */}
+          <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-[#111] mb-6 leading-[1.1]"
+            >
+              Where compassion meets action
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-gray-500 text-base md:text-lg font-light max-w-2xl mx-auto"
+            >
+              Our mission is to bridge the gap between those who care and those in need, ensuring every individual can thrive in a supportive community.
+            </motion.p>
+          </div>
 
-      {/* Our Story */}
-      <section className="w-full py-16 md:py-24 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="mb-6">
-              <span className="relative inline-block text-[#1E4D97] text-lg font-medium tracking-wide">
-                Our Story
-                <SvgUnderline className="opacity-80 stroke-[#1E4D97]" />
-              </span>
+          {/* Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 h-auto lg:h-[700px]">
+            {/* Large Left Image */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="col-span-1 lg:col-span-4 rounded-[2rem] overflow-hidden relative h-[400px] lg:h-full bg-gray-200"
+            >
+              <Image src="/images/educational-support/1.jpg" alt="Our impact" fill className="object-cover" />
+            </motion.div>
+
+            {/* Right Side Grid */}
+            <div className="col-span-1 lg:col-span-8 flex flex-col gap-4 lg:gap-6 h-full">
+              {/* Top Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 h-[400px] lg:h-1/2">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="bg-[#1E4D97] rounded-[2rem] p-8 md:p-12 flex flex-col justify-end text-white relative overflow-hidden"
+                >
+                  <h3 className="text-6xl lg:text-7xl font-semibold mb-2 tracking-tighter">10k+</h3>
+                  <p className="text-xl font-light opacity-90">Lives Touched</p>
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="bg-gray-200 rounded-[2rem] relative overflow-hidden h-[300px] md:h-full"
+                >
+                  <Image src="/images/diabetes-support/1.jpg" alt="Community support" fill className="object-cover" />
+                </motion.div>
+              </div>
+              
+              {/* Bottom Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 h-[400px] lg:h-1/2">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="bg-gray-200 rounded-[2rem] relative overflow-hidden h-[300px] md:h-full"
+                >
+                  <Image src="/images/igiogbe-support/4.JPG" alt="Igiogbe Center" fill className="object-cover" />
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="bg-[#111111] rounded-[2rem] p-8 md:p-12 flex flex-col justify-end text-white relative overflow-hidden"
+                >
+                  <h3 className="text-6xl lg:text-7xl font-semibold mb-2 tracking-tighter">5+</h3>
+                  <p className="text-xl font-light opacity-90">Core Initiatives</p>
+                </motion.div>
+              </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-6">
-              From Education to Community Transformation
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Stats Section */}
+      <section className="w-full py-24 md:py-32 px-6 bg-white mt-24">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] leading-[1.2]">
+              Building bridges of hope for everyone
             </h2>
-            <div className="space-y-4 text-[15px] text-gray-500 leading-relaxed font-light">
+            <div className="text-gray-500 font-light leading-relaxed space-y-6">
               <p>
-                Our journey began in <strong className="text-gray-900 font-medium">2007</strong> with Arise Education Scholarship Foundation, driven by a simple belief: every child deserves access to quality education.
+                Our journey began in <strong className="text-[#111] font-medium">2007</strong> with Arise Education Scholarship Foundation, driven by a simple belief: every child deserves access to quality education.
               </p>
               <p>
-                As our vision grew beyond education, we expanded into healthcare, culture, leadership, senior citizens&apos; support, and community development.
-              </p>
-              <p>
-                In <strong className="text-gray-900 font-medium">2026</strong>, these efforts were unified under <strong className="text-gray-900 font-medium">Arise Community Support Foundation</strong> — a single organisation connecting caring hearts with lives in need.
+                In <strong className="text-[#111] font-medium">2026</strong>, our expanded efforts across healthcare, culture, leadership, and senior support were unified under <strong className="text-[#111] font-medium">Arise Community Support Foundation</strong>. By delivering impactful initiatives, we are redefining community empowerment.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="w-full aspect-[4/3] rounded-3xl overflow-hidden"
-          >
-            <ImagePlaceholder label="Our Story Image" className="w-full h-full" />
-          </motion.div>
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-16 border-t border-gray-100">
+            <div>
+              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">2007</p>
+              <p className="text-sm text-gray-500 font-light">Year Founded</p>
+            </div>
+            <div className="border-l border-gray-100 pl-8 md:pl-12">
+              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">10k+</p>
+              <p className="text-sm text-gray-500 font-light">Lives Touched</p>
+            </div>
+            <div className="border-l border-gray-100 pl-8 md:pl-12">
+              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">17</p>
+              <p className="text-sm text-gray-500 font-light">SDGs Supported</p>
+            </div>
+            <div className="border-l border-gray-100 pl-8 md:pl-12">
+              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">5+</p>
+              <p className="text-sm text-gray-500 font-light">Active Initiatives</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="w-full py-16 md:py-24 px-4 bg-[#F5F8FC]">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="relative inline-block text-[#1E4D97] text-lg font-medium tracking-wide mb-4">
-              What We Do
-              <SvgUnderline className="opacity-80 stroke-[#1E4D97]" />
-            </span>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: "🎓", text: "Support education through scholarships and educational assistance." },
-              { icon: "🩺", text: "Promote health through diabetes and blood pressure screening, awareness, counseling, and medical support." },
-              { icon: "🏛", text: "Preserve culture and promote leadership through The Igiogbe Information Center." },
-              { icon: "🌟", text: "Empower young people through leadership development." },
-              { icon: "👴👵", text: "Support senior citizens with dignity, care, and community engagement." },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:-translate-y-1 transition-all duration-300 hover:shadow-md"
-              >
-                <span className="text-4xl block mb-6">{item.icon}</span>
-                <p className="text-[15px] text-gray-600 leading-relaxed font-light">{item.text}</p>
-              </motion.div>
+      {/* 3. Core Values */}
+      <section className="w-full py-24 md:py-32 px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16 md:mb-24 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-6">
+              Our core values
+            </h2>
+            <p className="text-gray-500 font-light leading-relaxed">
+              We believe in forging strong relationships with our communities, partners, and beneficiaries, based on trust and mutual respect.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-12 lg:gap-x-16 text-left">
+            {CORE_VALUES.map((val, i) => (
+              <div key={i} className="flex flex-col gap-3">
+                <div className="flex items-center gap-2.5 text-[#111]">
+                  <val.icon className="w-5 h-5 stroke-[1.5]" />
+                  <h4 className="text-[17px] font-medium">{val.title}</h4>
+                </div>
+                <p className="text-gray-500 font-light leading-relaxed text-[15px]">{val.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="w-full py-16 md:py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="relative inline-block text-[#1E4D97] text-lg font-medium tracking-wide mb-4">
-              Our Core Values
-              <SvgUnderline className="opacity-80 stroke-[#1E4D97]" />
-            </span>
-          </motion.div>
+      {/* 4. Supported By Logos */}
+      <section className="w-full py-20 md:py-28 px-6 bg-white text-center">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#111] mb-4">
+              Backed by the best
+            </h2>
+            <p className="text-gray-500 font-light text-sm md:text-base max-w-xl mx-auto">
+              We're proud to be supported by a network of world-class partners who share our vision for community empowerment and excellence.
+            </p>
+          </div>
+          
+          <div className="w-full overflow-hidden relative flex">
+            <div className="flex w-max items-center gap-x-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 animate-marquee pr-12">
+              <div className="flex items-center gap-2 text-gray-800"><LayoutGrid className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logoluxe</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Grid2X2 className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Graphicraft</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Command className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Auraicons</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Code className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Nexmark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Disc className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logolaze</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><LayoutTemplate className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Primeark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Hexagon className="w-6 h-6 fill-current" /><span className="text-xl font-bold tracking-tight">Logozen</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><PieChart className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Designnest</span></div>
+              
+              {/* Duplicate for seamless loop */}
+              <div className="flex items-center gap-2 text-gray-800"><LayoutGrid className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logoluxe</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Grid2X2 className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Graphicraft</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Command className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Auraicons</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Code className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Nexmark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Disc className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logolaze</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><LayoutTemplate className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Primeark</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><Hexagon className="w-6 h-6 fill-current" /><span className="text-xl font-bold tracking-tight">Logozen</span></div>
+              <div className="flex items-center gap-2 text-gray-800"><PieChart className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Designnest</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-            {CORE_VALUES.map((v, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-[#F5F8FC] hover:bg-[#E8EFF8] transition-colors duration-300 cursor-default"
+      {/* 5. Vision / Mission (Founder Note style) */}
+      <section className="w-full py-24 md:py-32 px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center">
+            
+            <div className="md:col-span-5 md:col-start-8 order-1 md:order-2 rounded-[2rem] overflow-hidden relative h-[500px] bg-gray-200">
+              <Image src="/images/igiogbe-support/7.JPG" alt="Our Leadership" fill className="object-cover" />
+            </div>
+
+            <div className="md:col-span-6 md:col-start-1 md:row-start-1 order-2 md:order-1 flex flex-col gap-8">
+              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111]">
+                A Word on Our Vision
+              </h2>
+              <div className="text-gray-500 font-light leading-relaxed space-y-6 text-lg">
+                <p>
+                  Our vision is simple: to build a compassionate society where caring hearts connect with deserving lives, creating lasting hope and opportunity.
+                </p>
+                <p>
+                  This is not just an organization. It is a community, a space where ideas grow, challenges are met with creativity, and every individual matters. None of this would be possible without your support, trust, and belief in what we stand for. Thank you for being a part of this story.
+                </p>
+                <p>
+                  Together, we are building something truly special, and I can&apos;t wait to see what the future holds.
+                </p>
+              </div>
+              <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-8">
+                <div>
+                  <p className="font-semibold text-[#111] text-lg">Rex Osagiede</p>
+                  <p className="text-gray-400 font-light">Founder, Arise CSF</p>
+                </div>
+                <AnimatedButton href="/rex-osagiede" variant="primary" hasArrow className="px-6 py-2.5">
+                  Hear Founder Story
+                </AnimatedButton>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Meet The Team */}
+      <section className="w-full py-24 md:py-32 px-6 bg-white">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-6">
+                Meet the team
+              </h2>
+              <p className="text-gray-500 font-light">
+                Behind every great initiative is a team of passionate innovators, problem-solvers, and visionaries.
+              </p>
+            </div>
+            
+            {/* Carousel Controls */}
+            <div className="hidden md:flex items-center gap-4">
+              <button 
+                onClick={() => scroll('left')}
+                className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-[#111] hover:bg-gray-50 transition-colors"
+                aria-label="Previous team member"
               >
-                <span className="text-4xl">{v.icon}</span>
-                <span className="text-sm font-medium text-gray-900">{v.label}</span>
-              </motion.div>
+                <ChevronLeft className="w-5 h-5 stroke-[1.5]" />
+              </button>
+              <button 
+                onClick={() => scroll('right')}
+                className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-[#111] hover:bg-gray-50 transition-colors"
+                aria-label="Next team member"
+              >
+                <ChevronRight className="w-5 h-5 stroke-[1.5]" />
+              </button>
+            </div>
+          </div>
+
+          <div 
+            ref={carouselRef}
+            className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
+          >
+            {TEAM.map((member, i) => (
+              <div key={i} className="flex flex-col gap-4 min-w-[280px] md:min-w-[320px] snap-start">
+                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200 border-dashed">
+                  {member.img ? (
+                    <Image src={member.img} alt={member.name} fill className="object-cover" />
+                  ) : (
+                    <Users className="w-16 h-16 text-gray-300 stroke-[1.5]" />
+                  )}
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-[#111]">{member.name}</h4>
+                  <p className="text-gray-500 font-light text-sm">{member.role}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SDGs */}
-      <section className="w-full py-16 md:py-24 px-4 bg-[#1E4D97]">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16"
-          >
-            <span className="relative inline-block text-[#7EB8D4] text-lg font-medium tracking-wide mb-4">
-              UN Sustainable Development Goals
-              <SvgUnderline className="opacity-60 stroke-[#7EB8D4]" />
+      {/* 7. Videos */}
+      <section className="w-full py-24 md:py-32 px-6 bg-[#fcfcfd]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16 md:mb-24">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1E4D97] mb-4 bg-[#1E4D97]/10 px-4 py-2 rounded-full">
+              ✦ Impact Stories
             </span>
-            <p className="text-white/80 text-base mt-6 font-light max-w-2xl mx-auto">
-              Our initiatives contribute to the United Nations Sustainable Development Goals.
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-6">
+              Trusted by the community
+            </h2>
+            <p className="text-gray-500 font-light max-w-2xl mx-auto">
+              Hear directly from the individuals and communities whose lives have been transformed through our initiatives.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {SDGS.map((sdg, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 transition-colors duration-300"
-              >
-                <span className="text-4xl mb-2">{sdg.icon}</span>
-                <span className="text-[#7EB8D4] text-xs font-bold tracking-wider uppercase">{sdg.label}</span>
-                <span className="text-white text-sm font-light leading-relaxed">{sdg.title}</span>
-              </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {VIDEOS.map((video, i) => (
+              <div key={i} className="flex flex-col gap-4 group cursor-pointer">
+                <div className="relative aspect-video rounded-[2rem] overflow-hidden bg-gray-200 shadow-sm">
+                  <Image src={video.thumbnail} alt={video.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-6 h-6 text-white fill-white ml-1" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs font-medium px-2 py-1 rounded">
+                    {video.duration}
+                  </div>
+                </div>
+                <h4 className="text-lg font-medium text-[#111] px-2">{video.title}</h4>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="w-full py-16 md:py-24 px-4">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-[#F5F8FC] rounded-3xl p-8 md:p-12 border border-gray-100"
-          >
-            <span className="relative inline-block text-[#1E4D97] text-lg font-medium tracking-wide mb-6">
-              Our Vision
-              <SvgUnderline className="opacity-80 stroke-[#1E4D97]" />
-            </span>
-            <p className="text-gray-600 text-lg leading-relaxed font-light mt-4">
-              To build a compassionate society where caring hearts connect with deserving lives, creating lasting hope and opportunity.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-[#1E4D97] rounded-3xl p-8 md:p-12 shadow-lg"
-          >
-            <span className="relative inline-block text-[#7EB8D4] text-lg font-medium tracking-wide mb-6">
-              Our Mission
-              <SvgUnderline className="opacity-60 stroke-[#7EB8D4]" />
-            </span>
-            <p className="text-white/90 text-[15px] leading-relaxed font-light mt-4">
-              To connect compassionate individuals, organizations, and partners with deserving beneficiaries through education, healthcare, cultural preservation, leadership development, and community support.
-            </p>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex justify-center mt-16"
-        >
-          <AnimatedButton variant="primary" hasArrow className="px-10 py-4 text-base" href="/get-involved">
-            Join Our Mission
-          </AnimatedButton>
-        </motion.div>
-      </section>
     </div>
   )
 }

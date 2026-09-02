@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-type Variant = 'primary' | 'secondary' | 'glass'
+type Variant = 'primary' | 'secondary' | 'glass' | 'blue-glass'
 
 interface AnimatedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
@@ -41,6 +41,14 @@ export function AnimatedButton({ children, variant = 'primary', hasArrow = false
   } else if (variant === 'glass') {
     // Glass bg -> White bg
     bgClass = 'bg-[#E8EFF8]/20 backdrop-blur-md border border-white/20 group-hover:border-[#1E4D97]'
+    textClass = 'text-white'
+    hoverTextClass = 'group-hover:text-[#1E4D97]'
+    fillClass = 'bg-white'
+    circleBorderClass = 'border-white/40'
+    hoverCircleBorderClass = 'group-hover:border-[#1E4D97]/40'
+  } else if (variant === 'blue-glass') {
+    // Blue glass bg -> White bg
+    bgClass = 'bg-[#1E4D97]/40 backdrop-blur-md border border-[#1E4D97]/50 group-hover:border-[#1E4D97]'
     textClass = 'text-white'
     hoverTextClass = 'group-hover:text-[#1E4D97]'
     fillClass = 'bg-white'

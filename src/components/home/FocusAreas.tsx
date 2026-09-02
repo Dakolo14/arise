@@ -3,43 +3,28 @@
 import { motion } from "framer-motion"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
 
-function ImagePlaceholder({ label, className = "" }: { label: string; className?: string }) {
-  return (
-    <div
-      className={`bg-gray-100 border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center text-gray-400 w-full aspect-[16/10] ${className}`}
-    >
-      <svg className="w-10 h-10 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      <span className="text-sm font-medium text-center px-4">{label}</span>
-    </div>
-  )
-}
+import Image from "next/image"
 
 const FOCUS_AREAS = [
   {
-    icon: "🎓",
     title: "Education & Scholarships",
     description: "Support education through scholarships and educational assistance for deserving indigent students.",
-    imageLabel: "Image: Education outreach",
+    imageSrc: "/images/educational-support/2.jpg",
   },
   {
-    icon: "🩺",
     title: "Healthcare & Diabetes Support",
     description: "Promote health through diabetes and blood pressure screening, awareness, counseling, and medical support.",
-    imageLabel: "Image: Health screening",
+    imageSrc: "/images/diabetes-support/3.JPG",
   },
   {
-    icon: "🏛",
     title: "Culture & Leadership (Igiogbe)",
     description: "Preserve culture and promote leadership through The Igiogbe Information Center.",
-    imageLabel: "Image: Igiogbe Center",
+    imageSrc: "/images/igiogbe-support/1.jpg",
   },
   {
-    icon: "🌟",
     title: "Youth & Senior Citizens Support",
     description: "Empower young people through leadership development and support senior citizens with dignity, care, and engagement.",
-    imageLabel: "Image: Youth & seniors program",
+    imageSrc: "/images/educational-support/6.jpg",
   },
 ]
 
@@ -90,11 +75,10 @@ export function WhatWeDo() {
               transition={{ duration: 0.7, delay: i * 0.15 }}
               className="group cursor-pointer transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="rounded-3xl overflow-hidden mb-6 bg-gray-50/50 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
-                <ImagePlaceholder label={area.imageLabel} className="group-hover:scale-[1.03] transition-transform duration-500 ease-out" />
+              <div className="rounded-3xl overflow-hidden mb-6 bg-gray-50/50 shadow-sm group-hover:shadow-lg transition-shadow duration-300 relative aspect-[16/10]">
+                <Image src={area.imageSrc} alt={area.title} fill className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out" />
               </div>
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-2xl">{area.icon}</span>
                 <h3 className="text-xl md:text-[22px] font-medium text-gray-800 group-hover:text-[#1E4D97] transition-colors">
                   {area.title}
                 </h3>

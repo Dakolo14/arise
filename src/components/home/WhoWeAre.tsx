@@ -4,18 +4,7 @@ import { motion } from "framer-motion"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
 
-function ImagePlaceholder({ label, className = "" }: { label: string; className?: string }) {
-  return (
-    <div
-      className={`bg-gray-200 flex flex-col items-center justify-center text-gray-400 w-full h-full min-h-[500px] md:min-h-[600px] ${className}`}
-    >
-      <svg className="w-12 h-12 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      <span className="text-sm font-medium">{label}</span>
-    </div>
-  )
-}
+import Image from "next/image"
 
 export function WhoWeAre() {
   return (
@@ -27,8 +16,8 @@ export function WhoWeAre() {
         transition={{ duration: 0.8, ease: "easeInOut" }}
         className="w-full max-w-7xl relative rounded-3xl overflow-hidden min-h-[500px] md:min-h-[600px]"
       >
-        <ImagePlaceholder label="Who We Are Background (1600×600)" className="absolute inset-0" />
-        <div className="absolute inset-0 bg-black/40" />
+        <Image src="/images/educational-support/2.jpg" alt="Who We Are Background" fill className="object-cover absolute inset-0" />
+        <div className="absolute inset-0 bg-black/60" />
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center h-full min-h-[500px] md:min-h-[600px] px-6 py-16">
           <motion.div 
@@ -38,7 +27,7 @@ export function WhoWeAre() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="mb-4 md:mb-6"
           >
-            <span className="relative inline-block text-[#7EB8D4] text-lg md:text-xl font-medium tracking-wide">
+            <span className="relative inline-block text-[#7EB8D4] text-lg md:text-xl font-medium tracking-wide drop-shadow-md">
               Who We Are
               <motion.div
                 initial={{ opacity: 0 }}
@@ -57,7 +46,7 @@ export function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="text-white text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight max-w-4xl"
+            className="text-white text-3xl md:text-4xl lg:text-5xl font-medium leading-tight max-w-4xl"
           >
             Empowering communities through compassion, integrity, and dedicated service.
           </motion.h2>
@@ -71,11 +60,11 @@ export function WhoWeAre() {
             transition={{ delay: 0.7, duration: 0.7 }}
             className="flex flex-col items-center gap-4"
           >
-            <p className="text-white/80 text-sm font-light uppercase tracking-widest">We Are</p>
-            <h3 className="text-[#589E47] text-3xl md:text-5xl font-semibold mb-2">
+            <p className="text-white/80 text-sm font-medium uppercase tracking-widest mb-1">We Are</p>
+            <h3 className="text-[#589E47] text-3xl md:text-5xl font-semibold mb-2 drop-shadow-md">
               Arise CSF
             </h3>
-            <AnimatedButton variant="glass" hasArrow className="px-9 py-3.5 text-base font-light" href="/about">
+            <AnimatedButton variant="secondary" hasArrow className="px-9 py-3.5 text-base font-medium shadow-xl" href="/about">
               Learn More
             </AnimatedButton>
           </motion.div>

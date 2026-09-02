@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
-function InitiativeCard({ title, label, icon, isFirst }: { title: string; label?: string; icon?: string; isFirst?: boolean }) {
+function InitiativeCard({ title, imageSrc, isFirst }: { title: string; imageSrc?: string; isFirst?: boolean }) {
   if (isFirst) {
     return (
       <div className="bg-[#1E4D97] rounded-3xl p-8 flex flex-col justify-end min-h-[280px] md:min-h-[320px] group cursor-pointer relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#1E4D97]/20">
@@ -18,14 +19,10 @@ function InitiativeCard({ title, label, icon, isFirst }: { title: string; label?
   }
 
   return (
-    <div className="bg-gray-200 rounded-3xl min-h-[280px] md:min-h-[320px] relative overflow-hidden group cursor-pointer border-2 border-dashed border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-gray-100 group-hover:scale-105 transition-transform duration-500">
-        <span className="text-4xl mb-2">{icon}</span>
-        <svg className="w-8 h-8 mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="text-xs font-medium px-4 text-center">{label}</span>
-      </div>
+    <div className="bg-gray-200 rounded-3xl min-h-[280px] md:min-h-[320px] relative overflow-hidden group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+      {imageSrc && (
+        <Image src={imageSrc} alt={title} fill className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out" />
+      )}
       
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
       
@@ -38,11 +35,11 @@ function InitiativeCard({ title, label, icon, isFirst }: { title: string; label?
 
 const INITIATIVES = [
   { title: "Our Initiatives", isFirst: true },
-  { title: "Education Scholarship", label: "Image: Scholarship program", icon: "🎓" },
-  { title: "Diabetes Support", label: "Image: Health screening", icon: "🩸" },
-  { title: "Igiogbe Center", label: "Image: Cultural center", icon: "🏛" },
-  { title: "Youth & Leadership", label: "Image: Youth training", icon: "🌟" },
-  { title: "Senior Citizens", label: "Image: Elderly care", icon: "👴" },
+  { title: "Education Scholarship", imageSrc: "/images/educational-support/2.jpg" },
+  { title: "Diabetes Support", imageSrc: "/images/diabetes-support/3.JPG" },
+  { title: "Igiogbe Center", imageSrc: "/images/igiogbe-support/1.jpg" },
+  { title: "Youth & Leadership", imageSrc: "/images/educational-support/6.jpg" },
+  { title: "Senior Citizens", imageSrc: "/images/educational-support/3.JPG" },
 ]
 
 export function OurInitiatives() {
@@ -58,7 +55,7 @@ export function OurInitiatives() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <InitiativeCard title={item.title} label={item.label} icon={item.icon} isFirst={item.isFirst} />
+              <InitiativeCard title={item.title} imageSrc={item.imageSrc} isFirst={item.isFirst} />
             </motion.div>
           ))}
         </div>
