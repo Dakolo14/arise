@@ -165,13 +165,6 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Bottom */}
-      <section className="w-full py-12 px-4 bg-[#1E4D97] text-center">
-        <p className="text-white/80 text-lg font-light">
-          Let&apos;s Connect — Connecting caring hearts with lives in need. 💙💚
-        </p>
-      </section>
     </div>
   )
 }

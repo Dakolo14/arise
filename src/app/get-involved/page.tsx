@@ -117,22 +117,22 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="w-full py-16 md:py-24 px-4 bg-[#1E4D97]">
+      {/* Bottom CTA Card */}
+      <section className="w-full pb-16 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-4xl mx-auto rounded-3xl p-10 md:p-14 text-center bg-gradient-to-br from-[#E8EFF8] to-white border border-[#1E4D97]/15 shadow-sm"
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
-            Let&apos;s connect caring hearts!
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            Let&apos;s Connect Caring Hearts
           </h2>
-          <p className="text-white/70 text-lg font-light mb-10">
-            Become the reason someone has hope tomorrow.
+          <p className="text-gray-600 text-base font-light max-w-xl mx-auto mb-8">
+            Become the reason someone has hope tomorrow. Whether through volunteering, partnership, or sponsorship, your support matters.
           </p>
-          <AnimatedButton variant="secondary" hasArrow className="px-10 py-4 text-[17px]" href="/contact">
+          <AnimatedButton variant="primary" hasArrow className="px-8 py-3.5" href="/contact">
             Contact Us Today
           </AnimatedButton>
         </motion.div>
