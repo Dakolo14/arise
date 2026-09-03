@@ -42,7 +42,7 @@ export function Footer() {
             <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
             <li><a href="/initiatives" className="hover:text-white transition-colors">Our Initiatives</a></li>
             <li><a href="/get-involved" className="hover:text-white transition-colors">Get Involved</a></li>
-            <li><a href="/donate" className="hover:text-white transition-colors text-white font-medium">Donate & Support Us</a></li>
+            <li><a href="/donation" className="hover:text-white transition-colors text-white font-medium">Donate & Support Us</a></li>
             <li><a href="/news-impact" className="hover:text-white transition-colors">News & Impact</a></li>
           </ul>
         </div>

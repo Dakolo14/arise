@@ -31,7 +31,7 @@ export default function NotFound() {
         <Link href="/" className="px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium transition-colors">
           Back to Home
         </Link>
-        <AnimatedButton href="/get-involved" hasArrow className="px-8 py-4">
+        <AnimatedButton href="/donation" hasArrow className="px-8 py-4">
           Support Our Cause
         </AnimatedButton>
       </div>

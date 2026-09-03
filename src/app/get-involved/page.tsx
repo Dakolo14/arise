@@ -5,16 +5,13 @@ import { useRouter } from "next/navigation"
 import { GraduationCap, Pill, HeartPulse, Building2, Handshake, HandHeart, Gift, ArrowRight } from "lucide-react"
 import { PageHero } from "@/components/ui/PageHero"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
-import { useDonationModal, DonationTab } from "@/context/DonationContext"
 
 interface GetInvolvedItem {
   icon: React.ElementType
   title: string
   description: string
-  action: "modal" | "link"
-  causeId?: string
-  tab?: DonationTab
-  href?: string
+  href: string
+  ctaText: string
 }
 
 const GET_INVOLVED_ITEMS: GetInvolvedItem[] = [
@@ -22,63 +19,58 @@ const GET_INVOLVED_ITEMS: GetInvolvedItem[] = [
     icon: GraduationCap,
     title: "Sponsor a Student",
     description: "Give a deserving indigent student the opportunity to access quality education through scholarships and educational support.",
-    action: "modal",
-    causeId: "education",
+    href: "/donation",
+    ctaText: "Sponsor via Donation",
   },
   {
     icon: Pill,
     title: "Donate Medications",
     description: "Help provide essential medications and medical supplies through our healthcare partners.",
-    action: "modal",
-    tab: "inkind",
+    href: "/donation",
+    ctaText: "Give Medications",
   },
   {
     icon: HeartPulse,
     title: "Support Health Initiatives",
     description: "Help fund free diabetes and blood pressure screening, health education, and medical outreach.",
-    action: "modal",
-    causeId: "diabetes",
+    href: "/donation",
+    ctaText: "Fund Healthcare",
   },
   {
     icon: Building2,
     title: "Sponsor a Project",
     description: "Support impactful projects in education, healthcare, culture, leadership, or senior citizens' welfare.",
-    action: "modal",
-    tab: "inkind",
+    href: "/donation",
+    ctaText: "Partner with Us",
   },
   {
     icon: Handshake,
     title: "Partner With Us",
     description: "Collaborate with Arise CSF to expand our reach and transform more lives.",
-    action: "link",
     href: "/contact",
+    ctaText: "Contact Us",
   },
   {
     icon: HandHeart,
     title: "Volunteer",
     description: "Share your time, skills, and expertise to support our mission.",
-    action: "link",
     href: "/contact",
+    ctaText: "Join as Volunteer",
   },
   {
     icon: Gift,
     title: "Make a Donation",
     description: "Every contribution brings hope, dignity, and opportunity to those who need it most.",
-    action: "modal",
-    causeId: "general",
+    href: "/donation",
+    ctaText: "Donate Now",
   },
 ]
 
 export default function GetInvolvedPage() {
   const router = useRouter()
-  const { openDonationModal } = useDonationModal()
 
   const handleCardClick = (item: GetInvolvedItem) => {
-    if (item.action === "modal") {
-      openDonationModal({ causeId: item.causeId, defaultTab: item.tab })
-    } else if (item.href) {
-      router.push(item.href)
-    }
+    router.push(item.href)
   }
 
   return (
@@ -109,7 +101,7 @@ export default function GetInvolvedPage() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-[#1E4D97] group-hover:translate-x-1 transition-transform">
-                <span>{item.action === "modal" ? "Give Now" : "Get in Touch"}</span>
+                <span>{item.ctaText}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </motion.div>

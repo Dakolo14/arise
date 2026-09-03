@@ -3,8 +3,6 @@ import { Poppins } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/ui/BackToTop";
-import { DonationProvider } from "@/context/DonationContext";
-import { DonationModal } from "@/components/donation/DonationModal";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -85,15 +83,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             })
           }}
         />
-        <DonationProvider>
-          <Navbar />
-          <main className="flex-1 w-full max-w-[1600px] mx-auto">
-            {children}
-          </main>
-          <Footer />
-          <BackToTop />
-          <DonationModal />
-        </DonationProvider>
+        <Navbar />
+        <main className="flex-1 w-full max-w-[1600px] mx-auto">
+          {children}
+        </main>
+        <Footer />
+        <BackToTop />
       </body>
     </html>
   );
