@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Logo } from "@/components/ui/Logo"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
+import { useDonationModal } from "@/context/DonationContext"
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -21,6 +22,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const pathname = usePathname()
+  const { openDonationModal } = useDonationModal()
   
   // Close menu when route changes
   React.useEffect(() => {
@@ -71,8 +73,8 @@ export function Navbar() {
             <div className="flex items-center ml-2">
               <AnimatedButton 
                 variant="primary"
-                href="/get-involved"
-                className="px-8 py-2.5 shadow-none hover:shadow-lg"
+                onClick={() => openDonationModal()}
+                className="px-8 py-2.5 shadow-none hover:shadow-lg cursor-pointer"
               >
                 Support Us
               </AnimatedButton>
@@ -83,8 +85,8 @@ export function Navbar() {
           <div className="flex xl:hidden items-center gap-3">
             <AnimatedButton 
               variant="primary"
-              href="/get-involved"
-              className="px-4 sm:px-6 py-2 text-xs sm:text-sm shadow-none"
+              onClick={() => openDonationModal()}
+              className="px-4 sm:px-6 py-2 text-xs sm:text-sm shadow-none cursor-pointer"
             >
               Support Us
             </AnimatedButton>
@@ -152,8 +154,11 @@ export function Navbar() {
                 </p>
                 <AnimatedButton 
                   variant="primary" 
-                  href="/get-involved"
-                  className="w-full justify-center py-3 text-sm shadow-md"
+                  onClick={() => {
+                    setIsOpen(false)
+                    openDonationModal()
+                  }}
+                  className="w-full justify-center py-3 text-sm shadow-md cursor-pointer"
                 >
                   Donate & Support Us
                 </AnimatedButton>

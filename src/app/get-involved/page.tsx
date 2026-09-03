@@ -1,48 +1,86 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GraduationCap, Pill, HeartPulse, Building2, Handshake, HandHeart, Gift } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { GraduationCap, Pill, HeartPulse, Building2, Handshake, HandHeart, Gift, ArrowRight } from "lucide-react"
 import { PageHero } from "@/components/ui/PageHero"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
-const GET_INVOLVED_ITEMS = [
+import { useDonationModal, DonationTab } from "@/context/DonationContext"
+
+interface GetInvolvedItem {
+  icon: React.ElementType
+  title: string
+  description: string
+  action: "modal" | "link"
+  causeId?: string
+  tab?: DonationTab
+  href?: string
+}
+
+const GET_INVOLVED_ITEMS: GetInvolvedItem[] = [
   {
     icon: GraduationCap,
     title: "Sponsor a Student",
     description: "Give a deserving indigent student the opportunity to access quality education through scholarships and educational support.",
+    action: "modal",
+    causeId: "education",
   },
   {
     icon: Pill,
     title: "Donate Medications",
     description: "Help provide essential medications and medical supplies through our healthcare partners.",
+    action: "modal",
+    tab: "inkind",
   },
   {
     icon: HeartPulse,
     title: "Support Health Initiatives",
     description: "Help fund free diabetes and blood pressure screening, health education, and medical outreach.",
+    action: "modal",
+    causeId: "diabetes",
   },
   {
     icon: Building2,
     title: "Sponsor a Project",
     description: "Support impactful projects in education, healthcare, culture, leadership, or senior citizens' welfare.",
+    action: "modal",
+    tab: "inkind",
   },
   {
     icon: Handshake,
     title: "Partner With Us",
     description: "Collaborate with Arise CSF to expand our reach and transform more lives.",
+    action: "link",
+    href: "/contact",
   },
   {
     icon: HandHeart,
     title: "Volunteer",
     description: "Share your time, skills, and expertise to support our mission.",
+    action: "link",
+    href: "/contact",
   },
   {
     icon: Gift,
     title: "Make a Donation",
     description: "Every contribution brings hope, dignity, and opportunity to those who need it most.",
+    action: "modal",
+    causeId: "general",
   },
 ]
 
 export default function GetInvolvedPage() {
+  const router = useRouter()
+  const { openDonationModal } = useDonationModal()
+
+  const handleCardClick = (item: GetInvolvedItem) => {
+    if (item.action === "modal") {
+      openDonationModal({ causeId: item.causeId, defaultTab: item.tab })
+    } else if (item.href) {
+      router.push(item.href)
+    }
+  }
+
   return (
     <div className="flex flex-col w-full bg-white">
       <PageHero
@@ -61,11 +99,19 @@ export default function GetInvolvedPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
+              onClick={() => handleCardClick(item)}
+              className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer group flex flex-col justify-between"
             >
-              <item.icon className="w-10 h-10 mb-5 text-[#1E4D97] group-hover:scale-110 group-hover:text-[#589E47] transition-all duration-300 stroke-[1.5]" />
-              <h3 className="text-xl font-medium text-gray-800 mb-3 group-hover:text-[#1E4D97] transition-colors">{item.title}</h3>
-              <p className="text-[15px] text-gray-500 leading-relaxed font-light">{item.description}</p>
+              <div>
+                <item.icon className="w-10 h-10 mb-5 text-[#1E4D97] group-hover:scale-110 group-hover:text-[#589E47] transition-all duration-300 stroke-[1.5]" />
+                <h3 className="text-xl font-medium text-gray-800 mb-3 group-hover:text-[#1E4D97] transition-colors">{item.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed font-light">{item.description}</p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-[#1E4D97] group-hover:translate-x-1 transition-transform">
+                <span>{item.action === "modal" ? "Give Now" : "Get in Touch"}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
             </motion.div>
           ))}
         </div>
