@@ -12,10 +12,10 @@ import {
   Heart, 
   ShieldCheck, 
   ExternalLink,
-  MessageCircle,
   Mail,
   Sparkles
 } from "lucide-react"
+import { FaWhatsapp } from "@/components/ui/SocialIcons"
 import { DONATION_CONFIG, BankAccount } from "@/data/donation"
 import { CurrencyType, DonationTab } from "@/context/DonationContext"
 
@@ -500,9 +500,9 @@ export function GivingWidget({
               href={`https://wa.me/${DONATION_CONFIG.partnershipContact.whatsapp}?text=${encodeURIComponent("Hello Arise Community Support Foundation, I have just completed a donation transfer to support your community initiatives.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-[#589E47] hover:bg-[#4a873c] text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all whitespace-nowrap"
+              className="px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-all whitespace-nowrap cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4" />
+              <FaWhatsapp className="w-4 h-4" />
               <span>Confirm on WhatsApp</span>
             </a>
           </div>
@@ -563,9 +563,9 @@ export function GivingWidget({
               href={`https://wa.me/${DONATION_CONFIG.partnershipContact.whatsapp}?text=${encodeURIComponent("Hello Arise Community Support Foundation, I would like to discuss an in-kind donation or partnership.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3.5 px-6 rounded-full bg-[#589E47] hover:bg-[#4a873c] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-md transition-all"
+              className="flex-1 py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4" />
+              <FaWhatsapp className="w-4 h-4" />
               <span>Discuss via WhatsApp</span>
             </a>
 

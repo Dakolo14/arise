@@ -12,7 +12,6 @@ import {
   ShieldCheck, 
   ArrowRight, 
   Heart, 
-  MessageCircle, 
   Mail, 
   Phone,
   HelpCircle,
@@ -22,6 +21,7 @@ import {
   Sparkles
 } from "lucide-react"
 import { PageHero } from "@/components/ui/PageHero"
+import { FaWhatsapp } from "@/components/ui/SocialIcons"
 import { DONATION_CONFIG } from "@/data/donation"
 import { CurrencyType } from "@/context/DonationContext"
 
@@ -254,10 +254,10 @@ export default function DonationPage() {
                     href={`https://wa.me/${DONATION_CONFIG.partnershipContact.whatsapp}?text=${encodeURIComponent("Hello Arise Community Support Foundation, I have just completed a bank transfer donation. Kindly find my confirmation details.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-3 rounded-full bg-[#589E47] hover:bg-[#4a873c] text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-all whitespace-nowrap"
+                    className="px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-all whitespace-nowrap cursor-pointer"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>Confirm via WhatsApp</span>
+                    <FaWhatsapp className="w-4 h-4" />
+                    <span>Confirm on WhatsApp</span>
                   </a>
                 </div>
               </div>
@@ -529,9 +529,9 @@ export default function DonationPage() {
                       href={`https://wa.me/${DONATION_CONFIG.partnershipContact.whatsapp}?text=${encodeURIComponent("Hello Arise CSF, I would like to arrange an in-kind donation or partnership.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-3 px-5 rounded-full bg-[#589E47] hover:bg-[#4a873c] text-white text-xs font-semibold flex items-center justify-center gap-2"
+                      className="flex-1 py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <FaWhatsapp className="w-4 h-4" />
                       <span>Chat on WhatsApp</span>
                     </a>
                     <a

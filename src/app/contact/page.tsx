@@ -3,6 +3,15 @@
 import { motion } from "framer-motion"
 import { PageHero } from "@/components/ui/PageHero"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
+import { 
+  FaFacebook, 
+  FaInstagram, 
+  FaLinkedin, 
+  FaYoutube, 
+  FaTiktok, 
+  FaWhatsapp 
+} from "@/components/ui/SocialIcons"
+
 const CONTACT_INFO = [
   {
     icon: (
@@ -10,6 +19,13 @@ const CONTACT_INFO = [
     ),
     label: "Address",
     value: "The Igiogbe, 10 Airport Road, Benin City, Edo State, Nigeria.",
+  },
+  {
+    icon: (
+      <FaWhatsapp className="w-6 h-6 text-white" />
+    ),
+    label: "WhatsApp",
+    value: "+234 803 466 4190\nInstant response & inquiries",
   },
   {
     icon: (
@@ -25,21 +41,15 @@ const CONTACT_INFO = [
     label: "Email",
     value: "info@AriseCSF.org",
   },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
-    ),
-    label: "Website",
-    value: "www.AriseCSF.org",
-  },
 ]
 
 const SOCIALS = [
-  { label: "Facebook", icon: "📘", href: "#" },
-  { label: "Instagram", icon: "📸", href: "#" },
-  { label: "LinkedIn", icon: "💼", href: "#" },
-  { label: "YouTube", icon: "▶️", href: "#" },
-  { label: "TikTok", icon: "🎵", href: "#" },
+  { label: "WhatsApp", icon: <FaWhatsapp className="w-8 h-8 text-[#25D366]" />, href: "https://wa.me/2348034664190" },
+  { label: "Facebook", icon: <FaFacebook className="w-8 h-8 text-[#1877F2]" />, href: "#" },
+  { label: "Instagram", icon: <FaInstagram className="w-8 h-8 text-[#E4405F]" />, href: "#" },
+  { label: "LinkedIn", icon: <FaLinkedin className="w-8 h-8 text-[#0A66C2]" />, href: "#" },
+  { label: "YouTube", icon: <FaYoutube className="w-8 h-8 text-[#FF0000]" />, href: "#" },
+  { label: "TikTok", icon: <FaTiktok className="w-8 h-8 text-black" />, href: "#" },
 ]
 
 export default function ContactPage() {
@@ -103,8 +113,8 @@ export default function ContactPage() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-white w-32 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100"
               >
-                <span className="text-3xl">{s.icon}</span>
-                <span className="text-sm font-medium text-gray-700">{s.label}</span>
+                <div className="flex items-center justify-center h-9">{s.icon}</div>
+                <span className="text-xs font-medium text-gray-700">{s.label}</span>
               </motion.a>
             ))}
           </div>
