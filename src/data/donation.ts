@@ -67,10 +67,10 @@ export const DONATION_CONFIG = {
 
   // Contact for In-Kind & Partnerships
   partnershipContact: {
-    email: "giving@arisecsf.org",
-    phone: "+234 800 000 0000",
-    whatsapp: "2348000000000",
-    address: "Benin City, Edo State, Nigeria",
+    email: "info@AriseCSF.org",
+    phone: "+234 803 466 4190",
+    whatsapp: "2348034664190",
+    address: "The Igiogbe, 10 Airport Road, Benin City, Edo State, Nigeria",
   },
 
   // Specific Initiatives
