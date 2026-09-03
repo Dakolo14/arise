@@ -12,8 +12,10 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arise-ngo.vercel.app';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://arisecsf.org'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Arise Community Support Foundation",
     template: "%s | Arise CSF"
@@ -22,18 +24,33 @@ export const metadata: Metadata = {
   keywords: ["Arise CSF", "Community Support", "Nigeria NGO", "Education Scholarship", "Diabetes Support", "Youth Leadership", "Igiogbe Center"],
   authors: [{ name: "Arise Community Support Foundation" }],
   creator: "Arise CSF",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon.ico" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "android-chrome-192x192", url: "/favicon/android-chrome-192x192.png" },
+      { rel: "android-chrome-512x512", url: "/favicon/android-chrome-512x512.png" },
+    ],
+  },
+  manifest: "/favicon/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_NG",
-    url: "https://arisecsf.org",
+    url: siteUrl,
     siteName: "Arise Community Support Foundation",
     title: "Arise Community Support Foundation",
     description: "Connecting caring hearts with lives in need through education, healthcare, youth leadership, and elderly support.",
     images: [
       {
-        url: "/arise-logo.jpg",
-        width: 800,
-        height: 600,
+        url: "/og-image.png",
+        width: 512,
+        height: 512,
         alt: "Arise Community Support Foundation Logo",
       }
     ],
@@ -42,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arise Community Support Foundation",
     description: "Connecting caring hearts with lives in need through education, healthcare, youth leadership, and elderly support.",
-    images: ["/arise-logo.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -71,8 +88,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@context": "https://schema.org",
               "@type": "NGO",
               "name": "Arise Community Support Foundation",
-              "url": "https://arisecsf.org",
-              "logo": "https://arisecsf.org/arise-logo.jpg",
+              "url": siteUrl,
+              "logo": `${siteUrl}/og-image.png`,
               "description": "Connecting caring hearts with lives in need through education, healthcare, youth leadership, and elderly support.",
               "address": {
                 "@type": "PostalAddress",

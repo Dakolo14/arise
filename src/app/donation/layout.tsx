@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Support Our Mission | Arise Community Support Foundation",
     description: "Every act of kindness creates hope. Donate to sponsor indigent students, provide free healthcare, and care for seniors in Nigeria.",
-    images: ["/arise-logo.jpg"],
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support Our Mission | Arise Community Support Foundation",
+    description: "Every act of kindness creates hope. Donate to sponsor indigent students, provide free healthcare, and care for seniors in Nigeria.",
+    images: ["/og-image.png"],
   },
 }
 
