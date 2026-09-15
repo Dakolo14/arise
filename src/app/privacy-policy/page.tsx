@@ -2,9 +2,20 @@ import { PageHero } from "@/components/ui/PageHero"
 import { Metadata } from "next"
 import Link from "next/link"
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arisecsf.org';
+
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Learn how Arise Community Support Foundation collects, uses, and protects your data.",
+  title: "Privacy Policy | Arise Community Support Foundation",
+  description: "Read the Arise Community Support Foundation privacy policy to understand how we protect your personal data, donation information, and communication privacy.",
+  alternates: {
+    canonical: `${siteUrl}/privacy-policy`,
+  },
+  openGraph: {
+    title: "Privacy Policy | Arise Community Support Foundation",
+    description: "Read the Arise Community Support Foundation privacy policy to understand how we protect your personal data, donation information, and communication privacy.",
+    url: `${siteUrl}/privacy-policy`,
+    images: [{ url: "/og-image.png", width: 512, height: 512, alt: "Arise CSF" }],
+  },
 }
 
 export default function PrivacyPolicyPage() {

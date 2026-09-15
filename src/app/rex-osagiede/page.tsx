@@ -1,10 +1,28 @@
 import Image from "next/image"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
 import { Award, Stethoscope } from "lucide-react"
+import { Metadata } from "next"
 
-export const metadata = {
-  title: "Rex Osagiede | Founder, Arise CSF",
-  description: "Learn about Rex Osagiede, founder of Arise Community Support Foundation, and his decades-long dedication to education, healthcare, and community empowerment.",
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arisecsf.org';
+
+export const metadata: Metadata = {
+  title: "Rex Osagiede | Founder & Visionary, Arise CSF",
+  description: "Read the story of Rex Osagiede, founder of Arise CSF, dedicated to grassroots humanitarian impact, diabetes care, and education scholarships in Nigeria.",
+  alternates: {
+    canonical: `${siteUrl}/rex-osagiede`,
+  },
+  openGraph: {
+    title: "Rex Osagiede | Founder & Visionary, Arise CSF",
+    description: "Read the story of Rex Osagiede, founder of Arise CSF, dedicated to grassroots humanitarian impact, diabetes care, and education scholarships in Nigeria.",
+    url: `${siteUrl}/rex-osagiede`,
+    images: [{ url: "/images/diabetes-support/9.jpg", width: 1200, height: 630, alt: "Rex Osagiede Founder" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rex Osagiede | Founder & Visionary, Arise CSF",
+    description: "Read the story of Rex Osagiede, founder of Arise CSF, dedicated to grassroots humanitarian impact, diabetes care, and education scholarships in Nigeria.",
+    images: ["/images/diabetes-support/9.jpg"],
+  },
 }
 
 export default function FounderPage() {
