@@ -3,9 +3,8 @@
 import React, { useRef } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Metadata } from "next"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
-import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, LayoutGrid, Grid2X2, Command, Code, Disc, LayoutTemplate, Hexagon, PieChart, ChevronLeft, ChevronRight, Play } from "lucide-react"
+import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, ChevronLeft, ChevronRight, Play } from "lucide-react"
 
 const CORE_VALUES = [
   { icon: Heart, title: "Compassion", desc: "Acting with deep empathy and care." },
@@ -40,207 +39,234 @@ export default function AboutPage() {
   }
 
   return (
-    <div className="flex flex-col w-full bg-[#f9f9fa] text-[#111111] font-sans selection:bg-[#1E4D97] selection:text-white pb-24">
+    <div className="flex flex-col w-full bg-[#f9f9fa] text-[#111111] font-sans selection:bg-[#1E4D97] selection:text-white pb-20 md:pb-28">
       
-      {/* 1. Hero & Masonry Grid */}
-      <section className="w-full pt-12 md:pt-16 px-6">
-        <div className="max-w-[1400px] mx-auto">
-          {/* Header */}
-          <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-[#111] mb-6 leading-[1.1]"
-            >
-              Where compassion meets action
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-gray-500 text-base md:text-lg font-light max-w-2xl mx-auto"
-            >
-              Our mission is to bridge the gap between those who care and those in need, ensuring every individual can thrive in a supportive community.
-            </motion.p>
-          </div>
-
-          {/* Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 h-auto lg:h-[700px]">
-            {/* Large Left Image */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="col-span-1 lg:col-span-4 rounded-[2rem] overflow-hidden relative h-[400px] lg:h-full bg-gray-200"
-            >
-              <Image src="/images/educational-support/1.jpg" alt="Our impact" fill className="object-cover" />
-            </motion.div>
-
-            {/* Right Side Grid */}
-            <div className="col-span-1 lg:col-span-8 flex flex-col gap-4 lg:gap-6 h-full">
-              {/* Top Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 h-[400px] lg:h-1/2">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="bg-[#1E4D97] rounded-[2rem] p-8 md:p-12 flex flex-col justify-end text-white relative overflow-hidden"
-                >
-                  <h3 className="text-6xl lg:text-7xl font-semibold mb-2 tracking-tighter">10k+</h3>
-                  <p className="text-xl font-light opacity-90">Lives Touched</p>
-                </motion.div>
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="bg-gray-200 rounded-[2rem] relative overflow-hidden h-[300px] md:h-full"
-                >
-                  <Image src="/images/diabetes-support/1.jpg" alt="Community support" fill className="object-cover" />
-                </motion.div>
-              </div>
-              
-              {/* Bottom Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 h-[400px] lg:h-1/2">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="bg-gray-200 rounded-[2rem] relative overflow-hidden h-[300px] md:h-full"
-                >
-                  <Image src="/images/igiogbe-support/4.JPG" alt="Igiogbe Center" fill className="object-cover" />
-                </motion.div>
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="bg-[#111111] rounded-[2rem] p-8 md:p-12 flex flex-col justify-end text-white relative overflow-hidden"
-                >
-                  <h3 className="text-6xl lg:text-7xl font-semibold mb-2 tracking-tighter">5+</h3>
-                  <p className="text-xl font-light opacity-90">Core Initiatives</p>
-                </motion.div>
-              </div>
-            </div>
-          </div>
+      {/* 1. Header & Story Write-up (Top of page fold) */}
+      <section className="w-full pt-10 sm:pt-14 md:pt-20 px-4 sm:px-8 md:px-12 lg:px-20">
+        {/* Main Title */}
+        <div className="text-center w-full mb-12 sm:mb-16 md:mb-20">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-[#111] mb-4 sm:mb-6 leading-[1.15]"
+          >
+            Where compassion meets action
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-gray-600 text-base sm:text-lg md:text-xl font-light leading-relaxed"
+          >
+            Connecting caring hearts with lives in need, empowering communities, and building lasting pathways of hope and opportunity.
+          </motion.p>
         </div>
-      </section>
 
-      {/* 2. Stats Section */}
-      <section className="w-full py-24 md:py-32 px-6 bg-white mt-24">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] leading-[1.2]">
-              Building bridges of hope for everyone
-            </h2>
-            <div className="text-gray-500 font-light leading-relaxed space-y-6">
+        {/* Short Write-up: Building bridges of hope */}
+        <div className="w-full mb-14 sm:mb-20 md:mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-start w-full">
+            <div className="lg:col-span-5">
+              <span className="text-[#1E4D97] text-xs sm:text-sm font-semibold tracking-wider uppercase mb-2 block">
+                Our Origin & Mission
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111] leading-snug sm:leading-tight">
+                Building bridges of hope for everyone
+              </h2>
+            </div>
+            <div className="lg:col-span-7 text-gray-600 font-light leading-relaxed space-y-4 sm:space-y-5 text-sm sm:text-base md:text-lg">
               <p>
-                Our journey began in <strong className="text-[#111] font-medium">2007</strong> with Arise Education Scholarship Foundation, driven by a simple belief: every child deserves access to quality education.
+                Our journey began in <strong className="text-[#111] font-medium">2007</strong> with the <strong className="text-[#111] font-medium">Arise Education Scholarship Foundation</strong>, driven by a simple belief: every child deserves access to quality education.
               </p>
               <p>
-                In <strong className="text-[#111] font-medium">2026</strong>, our expanded efforts across healthcare, culture, leadership, and senior support were unified under <strong className="text-[#111] font-medium">Arise Community Support Foundation</strong>. By delivering impactful initiatives, we are redefining community empowerment.
+                In <strong className="text-[#111] font-medium">2026</strong>, our expanded efforts across healthcare, cultural heritage, leadership, and senior citizens support were unified under <strong className="text-[#111] font-medium">Arise Community Support Foundation</strong>. By delivering hands-on, high-impact initiatives, we are redefining community empowerment.
               </p>
             </div>
           </div>
 
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-16 border-t border-gray-100">
-            <div>
-              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">2007</p>
-              <p className="text-sm text-gray-500 font-light">Year Founded</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 md:gap-10 pt-8 sm:pt-12 mt-8 sm:mt-12 border-t border-gray-200 w-full">
+            <div className="pr-2 sm:pr-0">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-[#1E4D97] mb-1 sm:mb-2">2007</p>
+              <p className="text-xs sm:text-sm md:text-base text-gray-500 font-light">Year Founded</p>
             </div>
-            <div className="border-l border-gray-100 pl-8 md:pl-12">
-              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">10k+</p>
-              <p className="text-sm text-gray-500 font-light">Lives Touched</p>
+            <div className="border-l border-gray-200 pl-4 sm:pl-6 md:pl-10">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-[#1E4D97] mb-1 sm:mb-2">10k+</p>
+              <p className="text-xs sm:text-sm md:text-base text-gray-500 font-light">Lives Touched</p>
             </div>
-            <div className="border-l border-gray-100 pl-8 md:pl-12">
-              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">17</p>
-              <p className="text-sm text-gray-500 font-light">SDGs Supported</p>
+            <div className="border-t sm:border-t-0 md:border-l border-gray-200 pt-4 sm:pt-0 pl-0 md:pl-10">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-[#1E4D97] mb-1 sm:mb-2">17</p>
+              <p className="text-xs sm:text-sm md:text-base text-gray-500 font-light">SDGs Supported</p>
             </div>
-            <div className="border-l border-gray-100 pl-8 md:pl-12">
-              <p className="text-5xl md:text-6xl font-semibold tracking-tighter text-[#111] mb-2">5+</p>
-              <p className="text-sm text-gray-500 font-light">Active Initiatives</p>
+            <div className="border-t sm:border-t-0 border-l border-gray-200 pt-4 sm:pt-0 pl-4 sm:pl-6 md:pl-10">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-[#1E4D97] mb-1 sm:mb-2">5+</p>
+              <p className="text-xs sm:text-sm md:text-base text-gray-500 font-light">Core Initiatives</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Impact Gallery Grid (Masonry on Desktop, Clean Proportional Cards on Mobile) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 h-auto lg:h-[700px] w-full">
+          {/* Large Left Image */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="col-span-1 lg:col-span-4 rounded-3xl overflow-hidden relative h-[260px] sm:h-[360px] lg:h-full bg-gray-200 shadow-sm"
+          >
+            <Image src="/images/educational-support/1.jpg" alt="Arise Education outreach" fill className="object-cover" />
+          </motion.div>
+
+          {/* Right Side Grid */}
+          <div className="col-span-1 lg:col-span-8 flex flex-col gap-4 sm:gap-6 h-auto lg:h-full">
+            {/* Top Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 h-auto lg:h-1/2 w-full">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="bg-[#1E4D97] rounded-3xl p-6 sm:p-8 md:p-10 min-h-[170px] sm:min-h-0 flex flex-col justify-end text-white relative overflow-hidden shadow-sm"
+              >
+                <h3 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-1.5 sm:mb-2 tracking-tighter">10k+</h3>
+                <p className="text-sm sm:text-base lg:text-lg font-light opacity-90">Beneficiaries Across Edo State</p>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="bg-gray-200 rounded-3xl relative overflow-hidden h-[240px] sm:h-auto lg:h-full shadow-sm"
+              >
+                <Image src="/images/diabetes-support/7.jpg" alt="Edo State Ministry of Health Partnership Outreach" fill className="object-cover" />
+              </motion.div>
+            </div>
+            
+            {/* Bottom Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 h-auto lg:h-1/2 w-full">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-gray-200 rounded-3xl relative overflow-hidden h-[240px] sm:h-auto lg:h-full shadow-sm"
+              >
+                <Image src="/images/igiogbe-support/1.jpg" alt="The Igiogbe Information Center" fill className="object-cover" />
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="bg-[#111111] rounded-3xl p-6 sm:p-8 md:p-10 min-h-[170px] sm:min-h-0 flex flex-col justify-end text-white relative overflow-hidden shadow-sm"
+              >
+                <h3 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-1.5 sm:mb-2 tracking-tighter">5+</h3>
+                <p className="text-sm sm:text-base lg:text-lg font-light opacity-90">Active Community Programs</p>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Core Values */}
-      <section className="w-full py-24 md:py-32 px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-16 md:mb-24 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-6">
-              Our core values
+      {/* 2. Core Values */}
+      <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 bg-white rounded-3xl mt-14 sm:mt-20">
+        <div className="w-full">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 w-full">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-3 sm:mb-4">
+              Our Core Values
             </h2>
-            <p className="text-gray-500 font-light leading-relaxed">
+            <p className="text-gray-500 font-light leading-relaxed text-sm sm:text-base md:text-lg">
               We believe in forging strong relationships with our communities, partners, and beneficiaries, based on trust and mutual respect.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-12 lg:gap-x-16 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-x-16 text-left w-full">
             {CORE_VALUES.map((val, i) => (
-              <div key={i} className="flex flex-col gap-3">
+              <div key={i} className="flex flex-col gap-2.5 sm:gap-3">
                 <div className="flex items-center gap-2.5 text-[#111]">
-                  <val.icon className="w-5 h-5 stroke-[1.5]" />
-                  <h4 className="text-[17px] font-medium">{val.title}</h4>
+                  <val.icon className="w-5 h-5 text-[#1E4D97] stroke-[2]" />
+                  <h4 className="text-base sm:text-lg font-medium">{val.title}</h4>
                 </div>
-                <p className="text-gray-500 font-light leading-relaxed text-[15px]">{val.desc}</p>
+                <p className="text-gray-500 font-light leading-relaxed text-sm sm:text-[15px]">{val.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Supported By Logos */}
-      <section className="w-full py-20 md:py-28 px-6 bg-white text-center">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#111] mb-4">
-              Backed by the best
+      {/* 3. Strategic Institutional Partners */}
+      <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 mt-14 sm:mt-20 text-center">
+        <div className="w-full">
+          <div className="mb-10 sm:mb-14 md:mb-18 w-full">
+            <span className="text-[#1E4D97] text-xs sm:text-sm font-semibold tracking-wider uppercase mb-2 sm:mb-3 block">
+              Official Collaboration
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-3 sm:mb-4">
+              Our Strategic Institutional Partners
             </h2>
-            <p className="text-gray-500 font-light text-sm md:text-base max-w-xl mx-auto">
-              We're proud to be supported by a network of world-class partners who share our vision for community empowerment and excellence.
+            <p className="text-gray-600 font-light text-sm sm:text-base md:text-lg leading-relaxed">
+              We are honored to collaborate with key public institutions and healthcare leaders to deliver vital screening, treatment, and community support across Edo State.
             </p>
           </div>
           
-          <div className="w-full overflow-hidden relative flex">
-            <div className="flex w-max items-center gap-x-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 animate-marquee pr-12">
-              <div className="flex items-center gap-2 text-gray-800"><LayoutGrid className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logoluxe</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Grid2X2 className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Graphicraft</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Command className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Auraicons</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Code className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Nexmark</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Disc className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logolaze</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><LayoutTemplate className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Primeark</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Hexagon className="w-6 h-6 fill-current" /><span className="text-xl font-bold tracking-tight">Logozen</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><PieChart className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Designnest</span></div>
-              
-              {/* Duplicate for seamless loop */}
-              <div className="flex items-center gap-2 text-gray-800"><LayoutGrid className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logoluxe</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Grid2X2 className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Graphicraft</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Command className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Auraicons</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Code className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Nexmark</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Disc className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Logolaze</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><LayoutTemplate className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Primeark</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><Hexagon className="w-6 h-6 fill-current" /><span className="text-xl font-bold tracking-tight">Logozen</span></div>
-              <div className="flex items-center gap-2 text-gray-800"><PieChart className="w-6 h-6" /><span className="text-xl font-bold tracking-tight">Designnest</span></div>
+          {/* Institutional Partner Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left w-full">
+            {/* Edo State Ministry of Health */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#1E4D97] text-xs font-medium mb-4">
+                  Healthcare Partnership
+                </div>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-2 sm:mb-3">
+                  Edo State Ministry of Health
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base font-light leading-relaxed">
+                  Official partner for the <strong>Arise Diabetes Support Initiative</strong>. Launched in partnership with the State Ministry of Health to provide free diabetes screenings, hypertension testing, vital medical consultations, and health education to thousands of residents.
+                </p>
+              </div>
+              <div className="mt-6 sm:mt-8 pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                <span>Edo State Government</span>
+                <span className="font-medium text-[#1E4D97]">Official Public Health Partner</span>
+              </div>
+            </div>
+
+            {/* Central Hospital, Edo State */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-medium mb-4">
+                  Clinical & Referral Partner
+                </div>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-2 sm:mb-3">
+                  Central Hospital, Edo State
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base font-light leading-relaxed">
+                  Collaborating on clinical care, medical professional support, and referral pathways for diagnosed beneficiaries requiring specialized treatment, continuous monitoring, and ongoing management in Benin City.
+                </p>
+              </div>
+              <div className="mt-6 sm:mt-8 pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                <span>Benin City, Edo State</span>
+                <span className="font-medium text-[#1E4D97]">Clinical Partner</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. Vision / Mission (Founder Note style) */}
-      <section className="w-full py-24 md:py-32 px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center">
+      {/* 4. Vision / Mission (Founder Note style) */}
+      <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20">
+        <div className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12 md:gap-20 items-center w-full">
             
-            <div className="md:col-span-5 md:col-start-8 order-1 md:order-2 rounded-[2rem] overflow-hidden relative h-[500px] bg-gray-200">
-              <Image src="/images/igiogbe-support/7.JPG" alt="Our Leadership" fill className="object-cover" />
+            <div className="md:col-span-5 md:col-start-8 order-1 md:order-2 rounded-3xl overflow-hidden relative h-[320px] sm:h-[420px] md:h-[520px] bg-gray-200 shadow-sm border border-gray-100">
+              <Image src="/images/diabetes-support/9.jpg" alt="Rex Osagiede - Founder, Arise CSF" fill className="object-cover object-top" />
             </div>
 
-            <div className="md:col-span-6 md:col-start-1 md:row-start-1 order-2 md:order-1 flex flex-col gap-8">
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111]">
+            <div className="md:col-span-6 md:col-start-1 md:row-start-1 order-2 md:order-1 flex flex-col gap-6 sm:gap-8">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111]">
                 A Word on Our Vision
               </h2>
-              <div className="text-gray-500 font-light leading-relaxed space-y-6 text-lg">
+              <div className="text-gray-500 font-light leading-relaxed space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg">
                 <p>
                   Our vision is simple: to build a compassionate society where caring hearts connect with deserving lives, creating lasting hope and opportunity.
                 </p>
@@ -251,10 +277,10 @@ export default function AboutPage() {
                   Together, we are building something truly special, and I can&apos;t wait to see what the future holds.
                 </p>
               </div>
-              <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-8">
+              <div className="mt-2 sm:mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 sm:gap-8">
                 <div>
-                  <p className="font-semibold text-[#111] text-lg">Rex Osagiede</p>
-                  <p className="text-gray-400 font-light">Founder, Arise CSF</p>
+                  <p className="font-semibold text-[#111] text-base sm:text-lg">Rex Osagiede</p>
+                  <p className="text-gray-400 font-light text-xs sm:text-sm">Founder, Arise CSF</p>
                 </div>
                 <AnimatedButton href="/rex-osagiede" variant="primary" hasArrow className="px-6 py-2.5">
                   Hear Founder Story
@@ -266,15 +292,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. Meet The Team */}
-      <section className="w-full py-24 md:py-32 px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-6">
+      {/* 5. Meet The Team */}
+      <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 bg-white rounded-3xl mt-14 sm:mt-16">
+        <div className="w-full">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 md:mb-24 gap-6 sm:gap-8 w-full">
+            <div className="w-full">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-3 sm:mb-6">
                 Meet the team
               </h2>
-              <p className="text-gray-500 font-light">
+              <p className="text-gray-500 font-light text-sm sm:text-base md:text-lg">
                 Behind every great initiative is a team of passionate innovators, problem-solvers, and visionaries.
               </p>
             </div>
@@ -300,20 +326,20 @@ export default function AboutPage() {
 
           <div 
             ref={carouselRef}
-            className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
+            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 sm:pb-8 w-full"
           >
             {TEAM.map((member, i) => (
-              <div key={i} className="flex flex-col gap-4 min-w-[280px] md:min-w-[320px] snap-start">
-                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200 border-dashed">
+              <div key={i} className="flex flex-col gap-3 sm:gap-4 min-w-[240px] sm:min-w-[280px] md:min-w-[320px] snap-start">
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200 border-dashed">
                   {member.img ? (
                     <Image src={member.img} alt={member.name} fill className="object-cover" />
                   ) : (
-                    <Users className="w-16 h-16 text-gray-300 stroke-[1.5]" />
+                    <Users className="w-12 sm:w-16 h-12 sm:h-16 text-gray-300 stroke-[1.5]" />
                   )}
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-[#111]">{member.name}</h4>
-                  <p className="text-gray-500 font-light text-sm">{member.role}</p>
+                  <h4 className="text-base sm:text-lg font-semibold text-[#111]">{member.name}</h4>
+                  <p className="text-gray-500 font-light text-xs sm:text-sm">{member.role}</p>
                 </div>
               </div>
             ))}
@@ -321,37 +347,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. Videos */}
-      <section className="w-full py-24 md:py-32 px-6 bg-[#fcfcfd]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-16 md:mb-24">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1E4D97] mb-4 bg-[#1E4D97]/10 px-4 py-2 rounded-full">
+      {/* 6. Videos */}
+      <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 mt-14 sm:mt-16">
+        <div className="w-full">
+          <div className="text-center mb-10 sm:mb-16 md:mb-24 w-full">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1E4D97] mb-3 sm:mb-4 bg-[#1E4D97]/10 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full">
               ✦ Impact Stories
             </span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-3 sm:mb-6">
               Trusted by the community
             </h2>
-            <p className="text-gray-500 font-light max-w-2xl mx-auto">
+            <p className="text-gray-500 font-light text-sm sm:text-base md:text-lg">
               Hear directly from the individuals and communities whose lives have been transformed through our initiatives.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 w-full">
             {VIDEOS.map((video, i) => (
-              <div key={i} className="flex flex-col gap-4 group cursor-pointer">
-                <div className="relative aspect-video rounded-[2rem] overflow-hidden bg-gray-200 shadow-sm">
+              <div key={i} className="flex flex-col gap-3 sm:gap-4 group cursor-pointer">
+                <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-200 shadow-sm">
                   <Image src={video.thumbnail} alt={video.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-6 h-6 text-white fill-white ml-1" />
+                    <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-5 sm:w-6 h-5 sm:h-6 text-white fill-white ml-0.5 sm:ml-1" />
                     </div>
                   </div>
-                  <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs font-medium px-2 py-1 rounded">
+                  <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-black/60 backdrop-blur-md text-white text-[11px] sm:text-xs font-medium px-2 py-1 rounded">
                     {video.duration}
                   </div>
                 </div>
-                <h4 className="text-lg font-medium text-[#111] px-2">{video.title}</h4>
+                <h4 className="text-base sm:text-lg font-medium text-[#111] px-1 sm:px-2">{video.title}</h4>
               </div>
             ))}
           </div>

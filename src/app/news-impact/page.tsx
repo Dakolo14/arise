@@ -10,7 +10,6 @@ export default function NewsImpactPage() {
   return (
     <div className="flex flex-col w-full bg-white">
       <PageHero
-        label="News & Impact"
         title="Stories That Inspire Change"
         subtitle="Follow our journey as we connect caring hearts with lives in need. Read about the lives we've touched and the communities we've strengthened."
       />

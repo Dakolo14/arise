@@ -12,10 +12,13 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arise-ngo.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arisecsf.org';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  verification: {
+    google: "5f0ttRhwFESOnjGjKkBabkskqZcuOK88GX0YCiHqAuk",
+  },
   title: {
     default: "Arise Community Support Foundation",
     template: "%s | Arise CSF"

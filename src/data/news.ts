@@ -44,7 +44,7 @@ export const NEWS_ARTICLES = [
     author: "Arise Team",
     authorAvatar: "/arise-logo.jpg",
     readTime: "2 Minute read",
-    imageSrc: "/images/educational-support/3.JPG",
+    imageSrc: "/images/diabetes-support/4.png",
     content: "We honored our elders with a special Senior Citizens Day celebration featuring health checkups, nutritional support, and cultural entertainment. Our Senior Citizens Support Initiative remains dedicated to promoting the dignity, health, and well-being of the elderly in our society.",
   },
   {

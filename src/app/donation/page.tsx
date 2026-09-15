@@ -76,7 +76,6 @@ export default function DonationPage() {
     <div className="flex flex-col w-full bg-white pb-24">
       {/* Page Hero */}
       <PageHero
-        label="Support Our Mission"
         title="Be the Heart Behind a Life Changed"
         subtitle="Every contribution directly empowers promising students with scholarships, provides free diabetes and health screenings, and delivers care to vulnerable community elders in Nigeria."
       />

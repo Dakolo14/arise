@@ -76,7 +76,6 @@ export default function GetInvolvedPage() {
   return (
     <div className="flex flex-col w-full bg-white">
       <PageHero
-        label="Get Involved"
         title="Be the Heart Behind a Life Changed"
         subtitle="Every act of kindness creates hope. Join us in connecting caring hearts with deserving lives and make a lasting difference in your community."
       />

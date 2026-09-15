@@ -101,7 +101,7 @@ export function HeroSection() {
             </motion.div>
 
             <div className="w-full z-10 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md">
-              <Image src="/images/diabetes-support/1.jpg" alt="Volunteers in action" fill className="object-cover" />
+              <Image src="/images/diabetes-support/5.png" alt="Healthcare and community outreach" fill className="object-cover" />
             </div>
 
             <motion.div 

@@ -39,7 +39,7 @@ const INITIATIVES = [
   { title: "Diabetes Support", imageSrc: "/images/diabetes-support/3.JPG" },
   { title: "Igiogbe Center", imageSrc: "/images/igiogbe-support/1.jpg" },
   { title: "Youth & Leadership", imageSrc: "/images/educational-support/6.jpg" },
-  { title: "Senior Citizens", imageSrc: "/images/educational-support/3.JPG" },
+  { title: "Senior Citizens", imageSrc: "/images/diabetes-support/4.png" },
 ]
 
 export function OurInitiatives() {

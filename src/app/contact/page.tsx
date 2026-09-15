@@ -46,7 +46,7 @@ const CONTACT_INFO = [
 const SOCIALS = [
   { label: "WhatsApp", icon: <FaWhatsapp className="w-8 h-8 text-[#25D366]" />, href: "https://wa.me/2348034664190" },
   { label: "Facebook", icon: <FaFacebook className="w-8 h-8 text-[#1877F2]" />, href: "#" },
-  { label: "Instagram", icon: <FaInstagram className="w-8 h-8 text-[#E4405F]" />, href: "#" },
+  { label: "Instagram", icon: <FaInstagram className="w-8 h-8 text-[#E4405F]" />, href: "https://www.instagram.com/arisediabetessupport?stkn=MXd5N3NuM3E1eHNuaA%3D%3D&utm_source=qr" },
   { label: "LinkedIn", icon: <FaLinkedin className="w-8 h-8 text-[#0A66C2]" />, href: "#" },
   { label: "YouTube", icon: <FaYoutube className="w-8 h-8 text-[#FF0000]" />, href: "#" },
   { label: "TikTok", icon: <FaTiktok className="w-8 h-8 text-black" />, href: "#" },
@@ -56,7 +56,6 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col w-full bg-white">
       <PageHero
-        label="Contact Us"
         title="Get in Touch"
         subtitle="We'd love to hear from you. Whether you'd like to partner with us, volunteer, support our initiatives, or simply learn more, we're here to help."
       />
@@ -107,6 +106,8 @@ export default function ContactPage() {
               <motion.a
                 key={i}
                 href={s.href}
+                target={s.href.startsWith("http") ? "_blank" : undefined}
+                rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
