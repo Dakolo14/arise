@@ -183,11 +183,11 @@ export default function DonationPage() {
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-[#1E4D97]/10 text-[#1E4D97] mb-2 uppercase tracking-wider">
-                              {acc.currency} Account
+                              {acc.causeTitle || `${acc.currency} Account`}
                             </span>
-                            <h3 className="text-lg font-bold text-gray-900">{acc.bankName}</h3>
+                            <h3 className="text-lg font-bold text-gray-900">{acc.accountName}</h3>
                             <p className="text-xs text-gray-600 mt-1">
-                              Account Name: <strong className="text-gray-900">{acc.accountName}</strong>
+                              Bank: <strong className="text-gray-900">{acc.bankName}</strong>
                             </p>
                             {acc.branch && (
                               <p className="text-xs text-gray-400 mt-0.5">Branch: {acc.branch}</p>
@@ -595,7 +595,7 @@ export default function DonationPage() {
                 </div>
                 <div className="pt-2 border-t border-gray-200/60">
                   <strong className="block text-gray-800 mb-0.5">Can international donors give?</strong>
-                  <span>Yes. We accept international wires to our Zenith Bank Domiciliary USD & GBP accounts, as well as online international cards.</span>
+                  <span>Yes. We accept international wires to our United Bank for Africa (UBA) Domiciliary USD & GBP accounts, as well as online international cards.</span>
                 </div>
               </div>
             </div>

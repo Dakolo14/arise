@@ -46,9 +46,9 @@ const CONTACT_INFO = [
 const SOCIALS = [
   { label: "WhatsApp", icon: <FaWhatsapp className="w-8 h-8 text-[#25D366]" />, href: "https://wa.me/2348034664190" },
   { label: "Facebook", icon: <FaFacebook className="w-8 h-8 text-[#1877F2]" />, href: "#" },
-  { label: "Instagram", icon: <FaInstagram className="w-8 h-8 text-[#E4405F]" />, href: "https://www.instagram.com/arisediabetessupport?stkn=MXd5N3NuM3E1eHNuaA%3D%3D&utm_source=qr" },
+  { label: "Instagram", icon: <FaInstagram className="w-8 h-8 text-[#E4405F]" />, href: "https://www.instagram.com/ariseeduscholarship?stkn=MXFiemg5NDVsN3M0OQ==" },
+  { label: "YouTube", icon: <FaYoutube className="w-8 h-8 text-[#FF0000]" />, href: "https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_" },
   { label: "LinkedIn", icon: <FaLinkedin className="w-8 h-8 text-[#0A66C2]" />, href: "#" },
-  { label: "YouTube", icon: <FaYoutube className="w-8 h-8 text-[#FF0000]" />, href: "#" },
   { label: "TikTok", icon: <FaTiktok className="w-8 h-8 text-black" />, href: "#" },
 ]
 

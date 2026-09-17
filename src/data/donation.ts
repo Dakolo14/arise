@@ -3,6 +3,7 @@ export interface BankAccount {
   bankName: string
   accountName: string
   accountNumber: string
+  causeTitle?: string
   sortCode?: string
   swiftBic?: string
   iban?: string
@@ -27,32 +28,44 @@ export const DONATION_CONFIG = {
   bankAccounts: [
     {
       currency: "NGN",
-      bankName: "Zenith Bank Plc",
-      accountName: "Arise Community Support Foundation",
-      accountNumber: "1234567890",
+      bankName: "United Bank for Africa (UBA)",
+      accountName: "Arise Education Scholarship foundation",
+      accountNumber: "1015202982",
+      causeTitle: "Education Scholarship",
       branch: "Benin City, Edo State",
     },
     {
       currency: "NGN",
-      bankName: "Guaranty Trust Bank (GTBank)",
-      accountName: "Arise Community Support Foundation",
-      accountNumber: "0987654321",
+      bankName: "United Bank for Africa (UBA)",
+      accountName: "The Igiogbe",
+      accountNumber: "1025116716",
+      causeTitle: "The Igiogbe Youth Center",
+      branch: "Benin City, Edo State",
+    },
+    {
+      currency: "NGN",
+      bankName: "United Bank for Africa (UBA)",
+      accountName: "Diabetes Support",
+      accountNumber: "1025116613",
+      causeTitle: "Diabetes Support",
       branch: "Benin City, Edo State",
     },
     {
       currency: "USD",
-      bankName: "Zenith Bank Plc (Domiciliary)",
+      bankName: "United Bank for Africa (UBA) Domiciliary",
       accountName: "Arise Community Support Foundation",
-      accountNumber: "5070000000",
-      swiftBic: "ZEIBNGLA",
+      accountNumber: "1015202982",
+      swiftBic: "UNAFNGLA",
+      causeTitle: "International / Diaspora Giving (USD)",
       branch: "Benin City, Edo State",
     },
     {
       currency: "GBP",
-      bankName: "Zenith Bank Plc (Domiciliary)",
+      bankName: "United Bank for Africa (UBA) Domiciliary",
       accountName: "Arise Community Support Foundation",
-      accountNumber: "5080000000",
-      swiftBic: "ZEIBNGLA",
+      accountNumber: "1015202982",
+      swiftBic: "UNAFNGLA",
+      causeTitle: "International / Diaspora Giving (GBP)",
       branch: "Benin City, Edo State",
     },
   ] as BankAccount[],

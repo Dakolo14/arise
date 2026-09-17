@@ -447,10 +447,10 @@ export function GivingWidget({
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#1E4D97]/10 text-[#1E4D97] mb-1.5 uppercase tracking-wider">
-                        {acc.currency} Account
+                        {acc.causeTitle || `${acc.currency} Account`}
                       </span>
-                      <h4 className="text-base font-semibold text-gray-900">{acc.bankName}</h4>
-                      <p className="text-xs text-gray-500 mt-0.5">Account Name: <strong className="text-gray-800">{acc.accountName}</strong></p>
+                      <h4 className="text-base font-semibold text-gray-900">{acc.accountName}</h4>
+                      <p className="text-xs text-gray-500 mt-0.5">Bank: <strong className="text-gray-800">{acc.bankName}</strong></p>
                     </div>
 
                     {/* Copy Account Button */}

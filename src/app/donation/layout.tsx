@@ -39,7 +39,7 @@ const donationFaqSchema = {
       "name": "Can I donate to Arise CSF via Nigerian bank transfer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Arise Community Support Foundation accepts direct bank deposits and internet transfers into our official corporate bank accounts with First Bank of Nigeria and Zenith Bank."
+        "text": "Yes. Arise Community Support Foundation accepts direct bank deposits and internet transfers into our official corporate bank accounts with United Bank for Africa (UBA) for Arise Education Scholarship foundation (1015202982), The Igiogbe (1025116716), and Diabetes Support (1025116613)."
       }
     },
     {

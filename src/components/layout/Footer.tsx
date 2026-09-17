@@ -85,11 +85,11 @@ export function Footer() {
       {/* Social Icons */}
       <div className="w-full flex justify-center gap-4 mt-16 pt-8 border-t border-white/10">
         {[
-          { label: 'Instagram', href: 'https://www.instagram.com/arisediabetessupport?stkn=MXd5N3NuM3E1eHNuaA%3D%3D&utm_source=qr', icon: FaInstagram },
+          { label: 'Instagram', href: 'https://www.instagram.com/ariseeduscholarship?stkn=MXFiemg5NDVsN3M0OQ==', icon: FaInstagram },
+          { label: 'YouTube', href: 'https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_', icon: FaYoutube },
           { label: 'WhatsApp', href: 'https://wa.me/2348034664190', icon: FaWhatsapp },
           { label: 'Facebook', href: '#', icon: FaFacebook },
           { label: 'LinkedIn', href: '#', icon: FaLinkedin },
-          { label: 'YouTube', href: '#', icon: FaYoutube },
           { label: 'X (Twitter)', href: '#', icon: FaXTwitter },
         ].map((s, i) => (
           <a

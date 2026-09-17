@@ -1,10 +1,10 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
-import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, ChevronLeft, ChevronRight, Play } from "lucide-react"
+import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, ChevronLeft, ChevronRight, Play, ExternalLink } from "lucide-react"
 
 const CORE_VALUES = [
   { icon: Heart, title: "Compassion", desc: "Acting with deep empathy and care." },
@@ -22,14 +22,17 @@ const TEAM = [
   { name: "Team Member Name", role: "Medical Director", img: "" },
 ]
 
-const VIDEOS = [
-  { title: "Education Impact Story", thumbnail: "/images/educational-support/2.jpg", duration: "3:42" },
-  { title: "Healthcare Outreach", thumbnail: "/images/diabetes-support/2.jpg", duration: "2:15" },
-  { title: "Community Transformation", thumbnail: "/images/igiogbe-support/1.jpg", duration: "5:04" },
-]
+// When uploaded to YouTube, paste the YouTube video ID here (e.g. "dQw4w9WgXcQ" or from https://youtu.be/ID)
+const FEATURED_COMMUNITY_VIDEO = {
+  title: "Education & Grassroots Community Impact Documentary",
+  thumbnail: "/images/educational-support/2.jpg",
+  duration: "Full Video",
+  youtubeId: "", // Paste YouTube video ID or link here
+}
 
 export default function AboutPage() {
   const carouselRef = useRef<HTMLDivElement>(null)
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false)
   
   const scroll = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -350,36 +353,83 @@ export default function AboutPage() {
       {/* 6. Videos */}
       <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 mt-14 sm:mt-16">
         <div className="w-full">
-          <div className="text-center mb-10 sm:mb-16 md:mb-24 w-full">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1E4D97] mb-3 sm:mb-4 bg-[#1E4D97]/10 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full">
-              ✦ Impact Stories
-            </span>
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 w-full">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-3 sm:mb-6">
               Trusted by the community
             </h2>
-            <p className="text-gray-500 font-light text-sm sm:text-base md:text-lg">
+            <p className="text-gray-500 font-light text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
               Hear directly from the individuals and communities whose lives have been transformed through our initiatives.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 w-full">
-            {VIDEOS.map((video, i) => (
-              <div key={i} className="flex flex-col gap-3 sm:gap-4 group cursor-pointer">
-                <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-200 shadow-sm">
-                  <Image src={video.thumbnail} alt={video.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-5 sm:w-6 h-5 sm:h-6 text-white fill-white ml-0.5 sm:ml-1" />
+          {/* Single full-width featured video container */}
+          <div className="w-full">
+            <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden bg-black shadow-xl border border-gray-200/80 group">
+              {isPlayingVideo && FEATURED_COMMUNITY_VIDEO.youtubeId ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${FEATURED_COMMUNITY_VIDEO.youtubeId}?autoplay=1&rel=0`}
+                  title={FEATURED_COMMUNITY_VIDEO.title}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <div 
+                  onClick={() => {
+                    if (FEATURED_COMMUNITY_VIDEO.youtubeId) {
+                      setIsPlayingVideo(true)
+                    } else {
+                      window.open("https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_", "_blank", "noopener,noreferrer")
+                    }
+                  }}
+                  className="relative w-full h-full cursor-pointer select-none"
+                >
+                  <Image
+                    src={FEATURED_COMMUNITY_VIDEO.thumbnail}
+                    alt={FEATURED_COMMUNITY_VIDEO.title}
+                    fill
+                    priority
+                    className="object-cover group-hover:scale-102 transition-transform duration-700"
+                  />
+                  
+                  {/* Dark gradient overlay for readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/25 group-hover:from-black/75 group-hover:via-black/25 transition-colors" />
+
+                  {/* Center Play Button */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                    <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full bg-white/25 backdrop-blur-md flex items-center justify-center border border-white/60 group-hover:scale-110 group-hover:bg-[#1E4D97] transition-all duration-300 shadow-2xl">
+                      <Play className="w-7 sm:w-9 md:w-11 h-7 sm:h-9 md:h-11 text-white fill-white ml-1" />
                     </div>
+                    <span className="mt-4 text-xs sm:text-sm font-medium tracking-wide text-white/95 bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+                      Click to Watch Community Impact Story
+                    </span>
                   </div>
-                  <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-black/60 backdrop-blur-md text-white text-[11px] sm:text-xs font-medium px-2 py-1 rounded">
-                    {video.duration}
+
+                  {/* Bottom Information Bar */}
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 text-white">
+                    <div className="max-w-2xl">
+                      <h3 className="text-base sm:text-xl md:text-2xl font-medium text-white drop-shadow-md leading-snug">
+                        {FEATURED_COMMUNITY_VIDEO.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-gray-300 font-light mt-1 line-clamp-1 sm:line-clamp-none">
+                        Educational scholarship awards, grassroots diabetes screenings, and youth leadership in action.
+                      </p>
+                    </div>
+
+                    <a
+                      href="https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-2 self-start sm:self-auto text-xs font-semibold px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white backdrop-blur-md transition-colors shrink-0 shadow-md"
+                    >
+                      <span>YouTube Channel</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
-                <h4 className="text-base sm:text-lg font-medium text-[#111] px-1 sm:px-2">{video.title}</h4>
-              </div>
-            ))}
+              )}
+            </div>
           </div>
         </div>
       </section>
