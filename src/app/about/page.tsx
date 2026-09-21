@@ -1,10 +1,10 @@
 "use client"
 
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { AnimatedButton } from "@/components/ui/AnimatedButton"
-import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, ChevronLeft, ChevronRight, Play, ExternalLink } from "lucide-react"
+import { Heart, ShieldCheck, Zap, Users, Star, HelpingHand, Play, ExternalLink } from "lucide-react"
 
 const CORE_VALUES = [
   { icon: Heart, title: "Compassion", desc: "Acting with deep empathy and care." },
@@ -13,13 +13,6 @@ const CORE_VALUES = [
   { icon: Users, title: "Community", desc: "Building strong, united networks." },
   { icon: Star, title: "Excellence", desc: "Delivering our best every day." },
   { icon: HelpingHand, title: "Service", desc: "Selflessly helping those in need." },
-]
-
-const TEAM = [
-  { name: "Team Member Name", role: "Co-Founder", img: "" },
-  { name: "Team Member Name", role: "Head of Programs", img: "" },
-  { name: "Team Member Name", role: "Community Lead", img: "" },
-  { name: "Team Member Name", role: "Medical Director", img: "" },
 ]
 
 // When uploaded to YouTube, paste the YouTube video ID here (e.g. "dQw4w9WgXcQ" or from https://youtu.be/ID)
@@ -31,15 +24,7 @@ const FEATURED_COMMUNITY_VIDEO = {
 }
 
 export default function AboutPage() {
-  const carouselRef = useRef<HTMLDivElement>(null)
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
-  
-  const scroll = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
-    }
-  }
 
   return (
     <div className="flex flex-col w-full bg-[#f9f9fa] text-[#111111] font-sans selection:bg-[#1E4D97] selection:text-white pb-20 md:pb-28">
@@ -295,62 +280,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. Meet The Team */}
-      <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 bg-white rounded-3xl mt-14 sm:mt-16">
-        <div className="w-full">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 md:mb-24 gap-6 sm:gap-8 w-full">
-            <div className="w-full">
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight text-[#111] mb-3 sm:mb-6">
-                Meet the team
-              </h2>
-              <p className="text-gray-500 font-light text-sm sm:text-base md:text-lg">
-                Behind every great initiative is a team of passionate innovators, problem-solvers, and visionaries.
-              </p>
-            </div>
-            
-            {/* Carousel Controls */}
-            <div className="hidden md:flex items-center gap-4">
-              <button 
-                onClick={() => scroll('left')}
-                className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-[#111] hover:bg-gray-50 transition-colors"
-                aria-label="Previous team member"
-              >
-                <ChevronLeft className="w-5 h-5 stroke-[1.5]" />
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-[#111] hover:bg-gray-50 transition-colors"
-                aria-label="Next team member"
-              >
-                <ChevronRight className="w-5 h-5 stroke-[1.5]" />
-              </button>
-            </div>
-          </div>
-
-          <div 
-            ref={carouselRef}
-            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 sm:pb-8 w-full"
-          >
-            {TEAM.map((member, i) => (
-              <div key={i} className="flex flex-col gap-3 sm:gap-4 min-w-[240px] sm:min-w-[280px] md:min-w-[320px] snap-start">
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200 border-dashed">
-                  {member.img ? (
-                    <Image src={member.img} alt={member.name} fill className="object-cover" />
-                  ) : (
-                    <Users className="w-12 sm:w-16 h-12 sm:h-16 text-gray-300 stroke-[1.5]" />
-                  )}
-                </div>
-                <div>
-                  <h4 className="text-base sm:text-lg font-semibold text-[#111]">{member.name}</h4>
-                  <p className="text-gray-500 font-light text-xs sm:text-sm">{member.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Videos */}
+      {/* 5. Videos */}
       <section className="w-full py-16 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 lg:px-20 mt-14 sm:mt-16">
         <div className="w-full">
           <div className="text-center mb-8 sm:mb-12 md:mb-16 w-full">

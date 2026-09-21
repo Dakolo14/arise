@@ -10,7 +10,6 @@ import {
   Compass, 
   Heart, 
   Layers, 
-  ArrowUpRight,
   Mail,
   ShieldCheck,
   CheckCircle2,
@@ -23,7 +22,6 @@ interface SupportArea {
   category: string
   title: string
   description: string
-  image: string
   icon: React.ComponentType<{ className?: string }>
   whatsappMessage: string
 }
@@ -34,7 +32,6 @@ const SUPPORT_AREAS: SupportArea[] = [
     category: "Education",
     title: "Education Scholarships",
     description: "Sponsor a deserving student’s education by supporting school fees, books, learning materials or other educational needs. You can also partner with Arise Education Scholarship Foundation to support more students through their education.",
-    image: "/images/educational-support/1.jpg",
     icon: GraduationCap,
     whatsappMessage: "Hello Arise, I would like to support Education Scholarships. Please let me know the current needs and how I can contribute or partner.",
   },
@@ -43,7 +40,6 @@ const SUPPORT_AREAS: SupportArea[] = [
     category: "Healthcare",
     title: "Diabetes & Hypertension Support",
     description: "Support Arise Diabetes Support by donating diabetes and hypertension medicines, screening equipment, test strips and other essential supplies. You can also sponsor free community screenings, health education and awareness campaigns.",
-    image: "/images/diabetes-support/2.jpg",
     icon: HeartPulse,
     whatsappMessage: "Hello Arise, I would like to support Diabetes & Hypertension Support. Please let me know the current needs and how I can contribute or partner.",
   },
@@ -52,7 +48,6 @@ const SUPPORT_AREAS: SupportArea[] = [
     category: "Heritage",
     title: "Cultural Awareness & Community Programmes",
     description: "Sponsor programmes that promote cultural knowledge, preserve our heritage and encourage learning across generations, including activities at The Igiogbe.",
-    image: "/images/igiogbe-support/1.jpg",
     icon: Landmark,
     whatsappMessage: "Hello Arise, I would like to support Cultural Awareness & Community Programmes. Please let me know the current needs and how I can contribute or partner.",
   },
@@ -61,7 +56,6 @@ const SUPPORT_AREAS: SupportArea[] = [
     category: "Empowerment",
     title: "Youth & Leadership Development",
     description: "Support mentoring, skills development and leadership programmes that help young people discover their potential and contribute to their communities.",
-    image: "/images/educational-support/6.jpg",
     icon: Compass,
     whatsappMessage: "Hello Arise, I would like to support Youth & Leadership Development. Please let me know the current needs and how I can contribute or partner.",
   },
@@ -70,7 +64,6 @@ const SUPPORT_AREAS: SupportArea[] = [
     category: "Welfare",
     title: "Senior Citizens Support",
     description: "Contribute towards the care, welfare and practical needs of older members of our communities.",
-    image: "/images/diabetes-support/9.jpg",
     icon: Heart,
     whatsappMessage: "Hello Arise, I would like to support Senior Citizens Support. Please let me know the current needs and how I can contribute or partner.",
   },
@@ -79,7 +72,6 @@ const SUPPORT_AREAS: SupportArea[] = [
     category: "Operations",
     title: "Administrative & Operational Support",
     description: "Help sustain the Foundation’s work by contributing towards programme coordination, logistics, administration and essential running costs.",
-    image: "/images/educational-support/7.jpg",
     icon: Layers,
     whatsappMessage: "Hello Arise, I would like to support Administrative & Operational Support. Please let me know the current needs and how I can contribute or partner.",
   },
@@ -162,7 +154,7 @@ export default function SupportAndPartnerPage() {
             </motion.div>
           </div>
 
-          {/* Right Column: Flat, Crisp Image Anchor */}
+          {/* Right Column: Flat, Crisp Editorial Anchor */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -194,7 +186,7 @@ export default function SupportAndPartnerPage() {
         </div>
       </section>
 
-      {/* 2. Ways You Can Support: Full-Width, Flat & Neat Cards */}
+      {/* 2. Ways You Can Support: Full-Width, Flat & Clean (No Images) */}
       <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-24">
         
         {/* Section Header */}
@@ -211,11 +203,11 @@ export default function SupportAndPartnerPage() {
             </p>
           </div>
           <div className="hidden md:flex items-center gap-2 text-xs font-medium text-slate-400">
-            <span>6 Key Initiatives</span>
+            <span>6 Direct Support Pathways</span>
           </div>
         </div>
 
-        {/* 6 Flat, Neat Initiative Cards */}
+        {/* 6 Clean, Flat Initiative Cards (No Images) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {SUPPORT_AREAS.map((area, index) => {
             const Icon = area.icon
@@ -229,55 +221,45 @@ export default function SupportAndPartnerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: index * 0.04 }}
-                className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-slate-300 transition-colors duration-200"
+                className="group flex flex-col justify-between bg-white rounded-2xl border border-slate-200/80 hover:border-slate-300 p-6 sm:p-8 transition-colors duration-200"
               >
                 <div>
-                  {/* Visual Header with Real Image */}
-                  <div className="relative w-full h-48 overflow-hidden bg-slate-100">
-                    <Image
-                      src={area.image}
-                      alt={area.title}
-                      fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-300 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
-                    
-                    {/* Flat Category Pill */}
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-800 text-xs font-medium border border-slate-200">
-                      <Icon className="w-3.5 h-3.5 text-[#1E4D97]" />
-                      <span>{area.category}</span>
+                  {/* Top Bar: Icon + Category Badge */}
+                  <div className="flex items-center justify-between gap-3 mb-6">
+                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center text-[#1E4D97]">
+                      <Icon className="w-5 h-5 stroke-[1.75]" />
                     </div>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-50 border border-slate-200/60 text-xs font-medium text-slate-600 tracking-wide">
+                      {area.category}
+                    </span>
                   </div>
 
-                  {/* Card Body */}
-                  <div className="p-6 sm:p-7">
-                    <h3 className="text-xl font-medium tracking-tight text-slate-900 mb-3 group-hover:text-[#1E4D97] transition-colors leading-snug">
-                      {area.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm font-light leading-relaxed">
-                      {area.description}
-                    </p>
-                  </div>
+                  {/* Title & Body */}
+                  <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-slate-900 mb-3 group-hover:text-[#1E4D97] transition-colors leading-snug">
+                    {area.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
+                    {area.description}
+                  </p>
                 </div>
 
-                {/* Card Action Bar: Crisp, neat, zero sentence text, flat */}
-                <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                {/* Bottom Action Links: Flat, Concise, WhatsApp & Email */}
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors py-1.5 px-3 rounded-lg bg-emerald-50 hover:bg-emerald-100"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/70 text-xs sm:text-sm font-medium transition-colors"
                   >
-                    <FaWhatsapp className="w-3.5 h-3.5 text-emerald-600" />
+                    <FaWhatsapp className="w-4 h-4 text-emerald-600" />
                     <span>WhatsApp</span>
-                    <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
 
                   <a
                     href={emailUrl}
-                    className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-900 transition-colors py-1.5 px-3 rounded-lg hover:bg-slate-50"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs sm:text-sm font-medium transition-colors"
                   >
-                    <Mail className="w-3.5 h-3.5 text-slate-400" />
+                    <Mail className="w-4 h-4 text-slate-500" />
                     <span>Email</span>
                   </a>
                 </div>
