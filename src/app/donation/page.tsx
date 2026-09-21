@@ -92,24 +92,24 @@ export default function SupportAndPartnerPage() {
   return (
     <div className="w-full bg-[#FCFCFD] text-[#0F172A] font-sans selection:bg-[#1E4D97] selection:text-white">
       
-      {/* 1. Senior Editorial Hero: Warm, Human, & Balanced */}
-      <section className="relative w-full pt-8 sm:pt-14 md:pt-20 pb-16 sm:pb-20 px-4 sm:px-8 md:px-12 lg:px-20 overflow-hidden border-b border-slate-100">
-        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      {/* 1. Full-Width Editorial Hero (Zero max-width, Zero drop-shadows) */}
+      <section className="relative w-full pt-8 sm:pt-14 md:pt-20 pb-16 sm:pb-20 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-slate-100">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
-          {/* Left Column: Typography & Intent */}
+          {/* Left Column */}
           <div className="lg:col-span-7">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/80 border border-blue-100/70 text-xs font-medium text-[#1E4D97] mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-medium text-[#1E4D97] mb-6"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#1E4D97]" />
               <span>Partnership & Giving</span>
             </motion.div>
 
             <motion.h1 
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
               className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-slate-900 mb-6 leading-[1.12]"
@@ -118,10 +118,10 @@ export default function SupportAndPartnerPage() {
             </motion.h1>
 
             <motion.div 
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="space-y-4 text-slate-600 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl"
+              className="space-y-4 text-slate-600 text-base sm:text-lg md:text-xl font-light leading-relaxed"
             >
               <p>
                 Every act of support can make a meaningful difference. Whether you wish to sponsor a deserving student, contribute healthcare supplies, support community programmes or help with the Foundation’s running costs, we would be glad to discuss how you can get involved.
@@ -131,9 +131,9 @@ export default function SupportAndPartnerPage() {
               </p>
             </motion.div>
 
-            {/* Crisp, Senior Button Group: Zero sentence text */}
+            {/* Flat, Concise Action Buttons */}
             <motion.div 
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
               className="flex flex-wrap items-center gap-3.5 pt-8"
@@ -142,7 +142,7 @@ export default function SupportAndPartnerPage() {
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello Arise, I would like to learn more about supporting and partnering with Arise Community Support Foundation.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#1E4D97] hover:bg-[#163a75] text-white text-sm font-medium transition-all shadow-sm hover:shadow active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#1E4D97] hover:bg-[#163a75] text-white text-sm font-medium transition-colors active:scale-[0.98]"
               >
                 <FaWhatsapp className="w-4 h-4 text-emerald-400" />
                 <span>WhatsApp</span>
@@ -150,7 +150,7 @@ export default function SupportAndPartnerPage() {
 
               <a
                 href={`mailto:${officialEmail}?subject=${encodeURIComponent("Partnership & Support Inquiry - Arise CSF")}`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-700 text-sm font-medium border border-slate-200/80 transition-all shadow-2xs hover:border-slate-300 active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-700 text-sm font-medium border border-slate-200 transition-colors active:scale-[0.98]"
               >
                 <Mail className="w-4 h-4 text-slate-500" />
                 <span>Email</span>
@@ -162,14 +162,14 @@ export default function SupportAndPartnerPage() {
             </motion.div>
           </div>
 
-          {/* Right Column: Authentic Human Imagery (No AI wireframe feel) */}
+          {/* Right Column: Flat, Crisp Image Anchor */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-slate-100">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden border border-slate-200 bg-slate-100">
               <Image 
                 src="/images/educational-support/1.jpg" 
                 alt="Arise Foundation community scholarship outreach" 
@@ -179,7 +179,7 @@ export default function SupportAndPartnerPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
               
-              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/40 shadow-sm flex items-center justify-between gap-3">
+              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between gap-3">
                 <div>
                   <p className="text-xs uppercase tracking-wider text-slate-500 font-medium">Grassroots Impact</p>
                   <p className="text-sm font-medium text-slate-900">Serving communities across Nigeria</p>
@@ -194,8 +194,8 @@ export default function SupportAndPartnerPage() {
         </div>
       </section>
 
-      {/* 2. Ways You Can Support: Senior Editorial Grid */}
-      <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-24 max-w-7xl mx-auto">
+      {/* 2. Ways You Can Support: Full-Width, Flat & Neat Cards */}
+      <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-24">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16 pb-5 border-b border-slate-100">
@@ -206,7 +206,7 @@ export default function SupportAndPartnerPage() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-slate-900">
               Ways You Can Support
             </h2>
-            <p className="text-slate-500 font-light text-sm sm:text-base mt-2 max-w-xl">
+            <p className="text-slate-500 font-light text-sm sm:text-base mt-2">
               Choose an area close to your heart. Connect directly with our team to learn current requirements and support opportunities.
             </p>
           </div>
@@ -215,8 +215,8 @@ export default function SupportAndPartnerPage() {
           </div>
         </div>
 
-        {/* 6 Editorial Initiative Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
+        {/* 6 Flat, Neat Initiative Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {SUPPORT_AREAS.map((area, index) => {
             const Icon = area.icon
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(area.whatsappMessage)}`
@@ -225,11 +225,11 @@ export default function SupportAndPartnerPage() {
             return (
               <motion.article
                 key={area.id}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-200/70 hover:border-slate-300 hover:shadow-lg transition-all duration-300"
+                transition={{ duration: 0.35, delay: index * 0.04 }}
+                className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-slate-300 transition-colors duration-200"
               >
                 <div>
                   {/* Visual Header with Real Image */}
@@ -238,12 +238,12 @@ export default function SupportAndPartnerPage() {
                       src={area.image}
                       alt={area.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      className="object-cover group-hover:scale-102 transition-transform duration-300 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
                     
-                    {/* Floating Category Pill */}
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs text-slate-800 text-xs font-medium shadow-xs">
+                    {/* Flat Category Pill */}
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-800 text-xs font-medium border border-slate-200">
                       <Icon className="w-3.5 h-3.5 text-[#1E4D97]" />
                       <span>{area.category}</span>
                     </div>
@@ -260,13 +260,13 @@ export default function SupportAndPartnerPage() {
                   </div>
                 </div>
 
-                {/* Card Action Bar: Crisp, neat, zero sentence text */}
+                {/* Card Action Bar: Crisp, neat, zero sentence text, flat */}
                 <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors py-1 px-2.5 rounded-lg bg-emerald-50/80 hover:bg-emerald-100"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors py-1.5 px-3 rounded-lg bg-emerald-50 hover:bg-emerald-100"
                   >
                     <FaWhatsapp className="w-3.5 h-3.5 text-emerald-600" />
                     <span>WhatsApp</span>
@@ -275,7 +275,7 @@ export default function SupportAndPartnerPage() {
 
                   <a
                     href={emailUrl}
-                    className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-900 transition-colors py-1 px-2.5 rounded-lg hover:bg-slate-50"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-900 transition-colors py-1.5 px-3 rounded-lg hover:bg-slate-50"
                   >
                     <Mail className="w-3.5 h-3.5 text-slate-400" />
                     <span>Email</span>
@@ -287,13 +287,13 @@ export default function SupportAndPartnerPage() {
         </div>
       </section>
 
-      {/* 3. Transparent Process & Private Coordination (Seamless Trust Flow) */}
-      <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-12 bg-slate-50/60 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto">
+      {/* 3. Transparent Process & Private Coordination (Full-Width, Flat) */}
+      <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-12 bg-slate-50/70 border-y border-slate-100">
+        <div className="w-full">
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-4">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 text-[#1E4D97] font-semibold text-sm">
+              <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#1E4D97] font-semibold text-sm">
                 1
               </div>
               <div>
@@ -305,7 +305,7 @@ export default function SupportAndPartnerPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 text-[#1E4D97] font-semibold text-sm">
+              <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#1E4D97] font-semibold text-sm">
                 2
               </div>
               <div>
@@ -317,7 +317,7 @@ export default function SupportAndPartnerPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0 text-[#1E4D97] font-semibold text-sm">
+              <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#1E4D97] font-semibold text-sm">
                 3
               </div>
               <div>
@@ -330,7 +330,7 @@ export default function SupportAndPartnerPage() {
           </div>
 
           {/* Quiet, Dignified Security Note */}
-          <div className="mt-6 pt-6 border-t border-slate-200/60 flex flex-col sm:flex-row sm:items-center gap-3 text-xs sm:text-sm text-slate-500 font-light">
+          <div className="mt-6 pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center gap-3 text-xs sm:text-sm text-slate-500 font-light">
             <div className="flex items-center gap-2 text-slate-800 font-medium shrink-0">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>Private Coordination Policy:</span>
@@ -343,51 +343,45 @@ export default function SupportAndPartnerPage() {
         </div>
       </section>
 
-      {/* 4. Closing Invitation: Modern Warm Editorial Banner */}
-      <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-20 sm:py-28 max-w-7xl mx-auto">
-        <div className="w-full rounded-3xl bg-[#0F172A] text-white p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-2xl">
+      {/* 4. Closing Invitation: Full-Width, Flat & Clean Banner */}
+      <section className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-20">
+        <div className="w-full rounded-2xl bg-[#0F172A] border border-slate-800 text-white p-8 sm:p-12 md:p-14">
           
-          {/* Subtle Ambient Background Accent */}
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#1E4D97]/30 blur-3xl pointer-events-none" />
-          <div className="absolute right-1/4 -top-20 w-64 h-64 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+          <span className="text-xs uppercase tracking-widest text-[#7EB8D4] font-medium block mb-3">
+            Open Collaboration
+          </span>
 
-          <div className="relative z-10 max-w-3xl">
-            <span className="text-xs uppercase tracking-widest text-[#7EB8D4] font-medium block mb-3">
-              Open Collaboration
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-white mb-5 leading-tight">
+            Have another way you would like to help?
+          </h2>
+
+          <p className="text-slate-300 text-base sm:text-lg font-light leading-relaxed mb-8 sm:mb-10">
+            We welcome individuals, families, businesses and organisations interested in supporting or partnering with us. Contact us to discuss your ideas and how your contribution can make a difference.
+          </p>
+
+          {/* Flat, Concise Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3.5">
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello Arise, I would like to discuss partnering with Arise Community Support Foundation.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-medium transition-colors active:scale-[0.98]"
+            >
+              <FaWhatsapp className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </a>
+
+            <a
+              href={`mailto:${officialEmail}?subject=${encodeURIComponent("Support & Partnership Discussion - Arise CSF")}`}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white text-sm font-medium border border-white/20 transition-colors active:scale-[0.98]"
+            >
+              <Mail className="w-4 h-4 text-slate-300" />
+              <span>Email</span>
+            </a>
+
+            <span className="text-xs text-slate-400 font-light sm:ml-2">
+              Direct: +234 803 466 4190 • info@arisecsf.org
             </span>
-
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-white mb-5 leading-tight">
-              Have another way you would like to help?
-            </h2>
-
-            <p className="text-slate-300 text-base sm:text-lg font-light leading-relaxed mb-8 sm:mb-10 max-w-2xl">
-              We welcome individuals, families, businesses and organisations interested in supporting or partnering with us. Contact us to discuss your ideas and how your contribution can make a difference.
-            </p>
-
-            {/* Crisp Buttons: Zero sentence text */}
-            <div className="flex flex-wrap items-center gap-3.5">
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello Arise, I would like to discuss partnering with Arise Community Support Foundation.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-medium transition-all shadow-sm active:scale-[0.98]"
-              >
-                <FaWhatsapp className="w-4 h-4" />
-                <span>WhatsApp</span>
-              </a>
-
-              <a
-                href={`mailto:${officialEmail}?subject=${encodeURIComponent("Support & Partnership Discussion - Arise CSF")}`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-medium border border-white/20 transition-all active:scale-[0.98]"
-              >
-                <Mail className="w-4 h-4 text-slate-300" />
-                <span>Email</span>
-              </a>
-
-              <span className="text-xs text-slate-400 font-light sm:ml-2">
-                Direct: +234 803 466 4190 • info@arisecsf.org
-              </span>
-            </div>
           </div>
 
         </div>
