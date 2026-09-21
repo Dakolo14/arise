@@ -24,13 +24,13 @@ export interface PresetAmount {
 }
 
 export const DONATION_CONFIG = {
-  // Foundation Bank Accounts
+  // Foundation Bank Accounts - shared privately upon enquiry
   bankAccounts: [
     {
       currency: "NGN",
       bankName: "United Bank for Africa (UBA)",
       accountName: "Arise Education Scholarship foundation",
-      accountNumber: "1015202982",
+      accountNumber: "Shared privately upon enquiry",
       causeTitle: "Education Scholarship",
       branch: "Benin City, Edo State",
     },
@@ -38,7 +38,7 @@ export const DONATION_CONFIG = {
       currency: "NGN",
       bankName: "United Bank for Africa (UBA)",
       accountName: "The Igiogbe",
-      accountNumber: "1025116716",
+      accountNumber: "Shared privately upon enquiry",
       causeTitle: "The Igiogbe Youth Center",
       branch: "Benin City, Edo State",
     },
@@ -46,41 +46,22 @@ export const DONATION_CONFIG = {
       currency: "NGN",
       bankName: "United Bank for Africa (UBA)",
       accountName: "Diabetes Support",
-      accountNumber: "1025116613",
+      accountNumber: "Shared privately upon enquiry",
       causeTitle: "Diabetes Support",
-      branch: "Benin City, Edo State",
-    },
-    {
-      currency: "USD",
-      bankName: "United Bank for Africa (UBA) Domiciliary",
-      accountName: "Arise Community Support Foundation",
-      accountNumber: "1015202982",
-      swiftBic: "UNAFNGLA",
-      causeTitle: "International / Diaspora Giving (USD)",
-      branch: "Benin City, Edo State",
-    },
-    {
-      currency: "GBP",
-      bankName: "United Bank for Africa (UBA) Domiciliary",
-      accountName: "Arise Community Support Foundation",
-      accountNumber: "1015202982",
-      swiftBic: "UNAFNGLA",
-      causeTitle: "International / Diaspora Giving (GBP)",
       branch: "Benin City, Edo State",
     },
   ] as BankAccount[],
 
   // Online Payment Links / Gateways
-  // Replace these with your live merchant links (e.g. Paystack page, Flutterwave link, or Stripe)
   paymentLinks: {
-    paystackUrl: "https://paystack.shop/arisecsf",
-    flutterwaveUrl: "https://flutterwave.com/pay/arisecsf",
+    paystackUrl: "",
+    flutterwaveUrl: "",
     donorboxUrl: "",
   },
 
-  // Contact for In-Kind & Partnerships
+  // Contact for Inquiries & Partnerships
   partnershipContact: {
-    email: "info@AriseCSF.org",
+    email: "info@arisecsf.org",
     phone: "+234 803 466 4190",
     whatsapp: "2348034664190",
     address: "The Igiogbe, 10 Airport Road, Benin City, Edo State, Nigeria",
@@ -97,7 +78,7 @@ export const DONATION_CONFIG = {
     {
       id: "education",
       title: "Arise Education Scholarships",
-      description: "Cover tuition fees, textbooks, uniforms, and learning supplies for indigent primary & secondary students.",
+      description: "Cover tuition fees, textbooks, uniforms, and learning supplies for deserving primary & secondary students.",
       iconName: "GraduationCap",
     },
     {
@@ -125,7 +106,7 @@ export const DONATION_CONFIG = {
     NGN: [
       { amount: 5000, impactLabel: "Provides notebooks and stationery for 5 primary school pupils" },
       { amount: 15000, impactLabel: "Funds free diabetes test strips and screening for 15 elderly citizens" },
-      { amount: 35000, impactLabel: "Sponsors 1 full term of school tuition & uniform for an indigent child" },
+      { amount: 35000, impactLabel: "Sponsors 1 full term of school tuition & uniform for a deserving student" },
       { amount: 75000, impactLabel: "Supplies essential chronic medication for 10 community elders" },
       { amount: 150000, impactLabel: "Funds a full community health outreach session with testing supplies" },
     ] as PresetAmount[],

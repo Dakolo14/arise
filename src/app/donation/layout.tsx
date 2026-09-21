@@ -3,21 +3,21 @@ import { Metadata } from "next"
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arisecsf.org';
 
 export const metadata: Metadata = {
-  title: "Donate & Support | Fund Healthcare, Scholarships & Elderly Welfare",
-  description: "Donate to Arise CSF to fund scholarships, free diabetes testing, elderly care packages, and youth training. Give online or via secure Nigerian bank transfer.",
+  title: "Support & Partner With Us | Arise Community Support Foundation",
+  description: "Support Arise Community Support Foundation. Sponsor deserving students, donate healthcare supplies, support community programmes, or contribute to essential running costs.",
   alternates: {
     canonical: `${siteUrl}/donation`,
   },
   openGraph: {
-    title: "Support Our Mission | Arise Community Support Foundation",
-    description: "Every act of kindness creates hope. Donate to sponsor indigent students, provide free healthcare, and care for seniors in Nigeria.",
+    title: "Support & Partner With Us | Arise Community Support Foundation",
+    description: "Every act of support can make a meaningful difference. Partner with Arise CSF to sponsor deserving students, provide healthcare supplies, support community programmes, or assist with operational costs.",
     url: `${siteUrl}/donation`,
-    images: [{ url: "/images/diabetes-support/5.png", width: 1200, height: 630, alt: "Support Arise CSF" }],
+    images: [{ url: "/images/diabetes-support/5.png", width: 1200, height: 630, alt: "Support & Partner With Arise CSF" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Support Our Mission | Arise Community Support Foundation",
-    description: "Every act of kindness creates hope. Donate to sponsor indigent students, provide free healthcare, and care for seniors in Nigeria.",
+    title: "Support & Partner With Us | Arise Community Support Foundation",
+    description: "Every act of support can make a meaningful difference. Partner with Arise CSF to sponsor deserving students, provide healthcare supplies, support community programmes, or assist with operational costs.",
     images: ["/images/diabetes-support/5.png"],
   },
 }
@@ -28,42 +28,34 @@ const donationFaqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What programs do donations to Arise CSF support?",
+      "name": "What programs can I support at Arise Community Support Foundation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Your donations directly fund secondary and university education scholarships for indigent students, free diabetes screening and medication outreaches, vocational training at the Igiogbe Youth Center, and healthcare support for senior citizens in Nigeria."
+        "text": "Supporters can contribute to Education Scholarships for deserving students, Diabetes & Hypertension medical supplies and screening outreaches, Cultural Awareness & Community Programmes at The Igiogbe, Youth & Leadership Development, Senior Citizens Support, or Administrative & Operational Support to help sustain our running costs."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I donate to Arise CSF via Nigerian bank transfer?",
+      "name": "How do I make a contribution or discuss a partnership?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Arise Community Support Foundation accepts direct bank deposits and internet transfers into our official corporate bank accounts with United Bank for Africa (UBA) for Arise Education Scholarship foundation (1015202982), The Igiogbe (1025116716), and Diabetes Support (1025116613)."
+        "text": "To protect donor security and coordinate personal support, we do not publish banking details publicly. Interested supporters should contact us directly via WhatsApp at +234 803 466 4190 or email at info@arisecsf.org to discuss their preferred area of support. We then share the relevant contribution or payment details privately."
       }
     },
     {
       "@type": "Question",
-      "name": "Is Arise Community Support Foundation a verified NGO in Nigeria?",
+      "name": "Is Arise Community Support Foundation an officially registered NGO?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Arise Community Support Foundation was established in 2007 and is registered with the Corporate Affairs Commission (CAC) of Nigeria. We have conducted medical outreaches in official partnership with the Federal Ministry of Health and Edo State institutions."
+        "text": "Yes. Arise Community Support Foundation was established in 2007 and is registered with the Corporate Affairs Commission (CAC) of Nigeria. We have conducted community and healthcare outreaches in collaboration with the Federal Ministry of Health and community institutions."
       }
     },
     {
       "@type": "Question",
-      "name": "Can donors outside Nigeria contribute?",
+      "name": "Can individuals, businesses, and international organisations partner with Arise CSF?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. International donors and members of the Nigerian diaspora can support our cause via international wire transfer, online donation payment gateways, or by contacting our team directly at info@arisecsf.org."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does Arise CSF ensure transparent financial stewardship?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We maintain meticulous accounting, project-by-project documentation, photo receipts of educational materials and medical shipments, and publish regular impact stories showing exact beneficiary outcomes."
+        "text": "Yes. We welcome individuals, families, businesses, and international diaspora organisations interested in supporting any of our focus areas or discussing custom partnership opportunities."
       }
     }
   ]
