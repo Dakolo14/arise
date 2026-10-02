@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { FaInstagram, FaWhatsapp, FaFacebook, FaLinkedin, FaYoutube, FaXTwitter } from "@/components/ui/SocialIcons"
+import { FaInstagram, FaWhatsapp, FaYoutube } from "@/components/ui/SocialIcons"
 
 export function Footer() {
   return (
@@ -88,9 +88,6 @@ export function Footer() {
           { label: 'Instagram', href: 'https://www.instagram.com/ariseeduscholarship?stkn=MXFiemg5NDVsN3M0OQ==', icon: FaInstagram },
           { label: 'YouTube', href: 'https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_', icon: FaYoutube },
           { label: 'WhatsApp', href: 'https://wa.me/2348034664190', icon: FaWhatsapp },
-          { label: 'Facebook', href: '#', icon: FaFacebook },
-          { label: 'LinkedIn', href: '#', icon: FaLinkedin },
-          { label: 'X (Twitter)', href: '#', icon: FaXTwitter },
         ].map((s, i) => (
           <a
             key={i}
