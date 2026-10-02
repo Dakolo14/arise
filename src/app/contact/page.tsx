@@ -1,14 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { PageHero } from "@/components/ui/PageHero"
 import { SvgUnderline } from "@/components/ui/SvgUnderline"
+import { CheckCircle2 } from "lucide-react"
 import { 
-  FaFacebook, 
   FaInstagram, 
-  FaLinkedin, 
   FaYoutube, 
-  FaTiktok, 
   FaWhatsapp 
 } from "@/components/ui/SocialIcons"
 
@@ -19,6 +18,7 @@ const CONTACT_INFO = [
     ),
     label: "Address",
     value: "The Igiogbe, 10 Airport Road, Benin City, Edo State, Nigeria.",
+    href: "https://maps.google.com/?q=The+Igiogbe+10+Airport+Road+Benin+City+Edo+State+Nigeria",
   },
   {
     icon: (
@@ -26,6 +26,7 @@ const CONTACT_INFO = [
     ),
     label: "WhatsApp",
     value: "+234 803 466 4190\nInstant response & inquiries",
+    href: "https://wa.me/2348034664190",
   },
   {
     icon: (
@@ -33,6 +34,7 @@ const CONTACT_INFO = [
     ),
     label: "Phone",
     value: "+234 803 466 4190\n+234 703 414 5860\n+234 805 324 7625",
+    href: "tel:+2348034664190",
   },
   {
     icon: (
@@ -40,19 +42,30 @@ const CONTACT_INFO = [
     ),
     label: "Email",
     value: "info@AriseCSF.org",
+    href: "mailto:info@arisecsf.org",
   },
 ]
 
 const SOCIALS = [
   { label: "WhatsApp", icon: <FaWhatsapp className="w-8 h-8 text-[#25D366]" />, href: "https://wa.me/2348034664190" },
-  { label: "Facebook", icon: <FaFacebook className="w-8 h-8 text-[#1877F2]" />, href: "#" },
   { label: "Instagram", icon: <FaInstagram className="w-8 h-8 text-[#E4405F]" />, href: "https://www.instagram.com/ariseeduscholarship?stkn=MXFiemg5NDVsN3M0OQ==" },
   { label: "YouTube", icon: <FaYoutube className="w-8 h-8 text-[#FF0000]" />, href: "https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_" },
-  { label: "LinkedIn", icon: <FaLinkedin className="w-8 h-8 text-[#0A66C2]" />, href: "#" },
-  { label: "TikTok", icon: <FaTiktok className="w-8 h-8 text-black" />, href: "#" },
 ]
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const mailtoSubject = encodeURIComponent(formData.subject || "Website Inquiry - Arise CSF")
+    const mailtoBody = encodeURIComponent(
+      `Hello Arise Community Support Foundation,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )
+    window.location.href = `mailto:info@arisecsf.org?subject=${mailtoSubject}&body=${mailtoBody}`
+    setSubmitted(true)
+  }
+
   return (
     <div className="flex flex-col w-full bg-white">
       <PageHero
@@ -64,20 +77,23 @@ export default function ContactPage() {
       <section className="w-full pt-8 md:pt-12 pb-16 md:pb-24 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
           {CONTACT_INFO.map((item, i) => (
-            <motion.div
+            <motion.a
               key={i}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#F5F8FC] rounded-3xl p-8 hover:shadow-md transition-shadow duration-300"
+              className="bg-[#F5F8FC] rounded-3xl p-8 hover:shadow-md hover:bg-blue-50/50 transition-all duration-300 block group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-[#1E4D97] text-white flex items-center justify-center mb-5">
+              <div className="w-12 h-12 rounded-2xl bg-[#1E4D97] text-white flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
                 {item.icon}
               </div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">{item.label}</h3>
-              <p className="text-[15px] text-gray-500 font-light whitespace-pre-line">{item.value}</p>
-            </motion.div>
+              <h3 className="text-lg font-medium text-gray-800 mb-2 group-hover:text-[#1E4D97] transition-colors">{item.label}</h3>
+              <p className="text-[15px] text-gray-500 font-light whitespace-pre-line group-hover:text-gray-700 transition-colors">{item.value}</p>
+            </motion.a>
           ))}
         </div>
       </section>
@@ -155,25 +171,91 @@ export default function ContactPage() {
             </span>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <input type="text" placeholder="Your Name" className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all" />
-              <input type="email" placeholder="Your Email" className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all" />
-            </div>
-            <input type="text" placeholder="Subject" className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all" />
-            <textarea placeholder="Your Message" rows={6} className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all resize-none" />
-            <div className="flex justify-center">
-              <button className="bg-[#1E4D97] hover:bg-[#163a73] text-white px-10 py-4 rounded-full text-base font-medium transition-all hover:scale-105 shadow-xl shadow-[#1E4D97]/20">
-                Send Message
-              </button>
-            </div>
-          </motion.div>
+          {submitted ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="p-8 rounded-3xl bg-emerald-50 border border-emerald-200 text-center"
+            >
+              <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-emerald-950 mb-2">Message Prepared</h3>
+              <p className="text-emerald-800 text-sm max-w-md mx-auto mb-6">
+                Your email draft has been generated in your default mail app addressed to <strong>info@arisecsf.org</strong>. You can also contact us instantly via WhatsApp.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="https://wa.me/2348034664190"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white text-sm font-medium hover:bg-[#20ba59] transition-colors"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+                <button
+                  onClick={() => {
+                    setSubmitted(false)
+                    setFormData({ name: "", email: "", subject: "", message: "" })
+                  }}
+                  className="px-6 py-3 rounded-full bg-white text-emerald-900 border border-emerald-300 text-sm font-medium hover:bg-emerald-100/50 transition-colors"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.form
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <input 
+                  type="text" 
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Your Name" 
+                  className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all" 
+                />
+                <input 
+                  type="email" 
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="Your Email" 
+                  className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all" 
+                />
+              </div>
+              <input 
+                type="text" 
+                required
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                placeholder="Subject" 
+                className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all" 
+              />
+              <textarea 
+                required
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Your Message" 
+                rows={6} 
+                className="w-full px-6 py-4 rounded-2xl bg-[#F5F8FC] border border-gray-200 text-[15px] font-light focus:outline-none focus:ring-2 focus:ring-[#1E4D97]/30 focus:border-[#1E4D97] transition-all resize-none" 
+              />
+              <div className="flex justify-center">
+                <button 
+                  type="submit"
+                  className="bg-[#1E4D97] hover:bg-[#163a73] text-white px-10 py-4 rounded-full text-base font-medium transition-all hover:scale-105 shadow-xl shadow-[#1E4D97]/20"
+                >
+                  Send Message
+                </button>
+              </div>
+            </motion.form>
+          )}
         </div>
       </section>
     </div>
