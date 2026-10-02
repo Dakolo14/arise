@@ -15,12 +15,13 @@ const CORE_VALUES = [
   { icon: HelpingHand, title: "Service", desc: "Selflessly helping those in need." },
 ]
 
-// When uploaded to YouTube, paste the YouTube video ID here (e.g. "dQw4w9WgXcQ" or from https://youtu.be/ID)
+// Local video file in public/impact-documentary.mov
 const FEATURED_COMMUNITY_VIDEO = {
   title: "Education & Grassroots Community Impact Documentary",
   thumbnail: "/images/educational-support/2.jpg",
   duration: "Full Video",
-  youtubeId: "", // Paste YouTube video ID or link here
+  videoSrc: "/impact-documentary.mov",
+  youtubeId: "", // Optional: Paste YouTube video ID if streaming via YouTube
 }
 
 export default function AboutPage() {
@@ -295,23 +296,32 @@ export default function AboutPage() {
           {/* Single full-width featured video container */}
           <div className="w-full">
             <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden bg-black shadow-xl border border-gray-200/80 group">
-              {isPlayingVideo && FEATURED_COMMUNITY_VIDEO.youtubeId ? (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${FEATURED_COMMUNITY_VIDEO.youtubeId}?autoplay=1&rel=0`}
-                  title={FEATURED_COMMUNITY_VIDEO.title}
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+              {isPlayingVideo ? (
+                FEATURED_COMMUNITY_VIDEO.youtubeId ? (
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${FEATURED_COMMUNITY_VIDEO.youtubeId}?autoplay=1&rel=0`}
+                    title={FEATURED_COMMUNITY_VIDEO.title}
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video
+                    src={FEATURED_COMMUNITY_VIDEO.videoSrc}
+                    controls
+                    autoPlay
+                    playsInline
+                    poster={FEATURED_COMMUNITY_VIDEO.thumbnail}
+                    className="w-full h-full object-contain bg-black"
+                  >
+                    <source src={FEATURED_COMMUNITY_VIDEO.videoSrc} type="video/mp4" />
+                    <source src={FEATURED_COMMUNITY_VIDEO.videoSrc} type="video/quicktime" />
+                    Your browser does not support the video tag.
+                  </video>
+                )
               ) : (
                 <div 
-                  onClick={() => {
-                    if (FEATURED_COMMUNITY_VIDEO.youtubeId) {
-                      setIsPlayingVideo(true)
-                    } else {
-                      window.open("https://youtube.com/@theigiogbe?si=plHGstVxhLyFs9P_", "_blank", "noopener,noreferrer")
-                    }
-                  }}
+                  onClick={() => setIsPlayingVideo(true)}
                   className="relative w-full h-full cursor-pointer select-none"
                 >
                   <Image
