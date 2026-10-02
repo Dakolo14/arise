@@ -7,6 +7,7 @@ import { SvgUnderline } from "@/components/ui/SvgUnderline"
 import { FaInstagram } from "@/components/ui/SocialIcons"
 
 interface InitiativeItem {
+  id: string
   title: string
   description: string
   imageSrc: string
@@ -16,11 +17,13 @@ interface InitiativeItem {
 
 const INITIATIVES: InitiativeItem[] = [
   {
+    id: "education",
     title: "Arise Education Scholarship Initiative",
     description: "Providing scholarships and educational support to deserving indigent students, empowering them to achieve their full potential across secondary and tertiary levels.",
     imageSrc: "/images/educational-support/2.jpg",
   },
   {
+    id: "diabetes",
     title: "Arise Diabetes Support Initiative",
     description: "Providing free diabetes and blood pressure screening, health education, medical counseling, and free medications for vulnerable individuals who cannot afford essential healthcare.",
     partnerBadge: "Official Partnership: Edo State Ministry of Health & Central Hospital, Edo State",
@@ -28,16 +31,19 @@ const INITIATIVES: InitiativeItem[] = [
     imageSrc: "/images/diabetes-support/7.jpg",
   },
   {
+    id: "igiogbe",
     title: "The Igiogbe Information Center",
     description: "Preserving our cultural heritage, promoting leadership, and strengthening communities through education and civic engagement.",
     imageSrc: "/images/igiogbe-support/1.jpg",
   },
   {
+    id: "youth",
     title: "Arise Youth & Leadership Development Initiative",
     description: "Empowering young people through mentorship, leadership training, and community service.",
     imageSrc: "/images/educational-support/6.jpg",
   },
   {
+    id: "seniors",
     title: "Arise Senior Citizens Support Initiative",
     description: "Promoting the health, dignity, and well-being of senior citizens through regular health checkups, medication support, and caring community engagement.",
     imageSrc: "/images/diabetes-support/4.png",
@@ -58,12 +64,13 @@ export default function InitiativesPage() {
         <div className="max-w-6xl mx-auto space-y-20">
           {INITIATIVES.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.id}
+              id={item.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center ${i % 2 === 1 ? "md:direction-rtl" : ""}`}
+              className={`scroll-mt-28 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center ${i % 2 === 1 ? "md:direction-rtl" : ""}`}
             >
               {/* Image */}
               <div className={`${i % 2 === 1 ? "md:order-2" : ""}`}>
